@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        \Deep\Providers\DeepServiceProvider::class,
 
         /*
          * Application Service Providers...
