@@ -34,7 +34,7 @@
             </form>
             <small>
                 @auth
-                    @if (auth()->user()->is_qeoqeo_user)
+                    @if (auth()->user()->id === 1)
                         <form id="delete-post" action="{{ route('deep.posts.destroy', $post->id) }}" method="POST">
                             @csrf
                             @method('DELETE')

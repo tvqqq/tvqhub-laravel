@@ -45,12 +45,12 @@
     </div>
 
     @auth
-        @if (auth()->user()->is_qeoqeo_user)
+        @if (auth()->user()->id === 1)
             <button id="new-post-button">New Post 😍</button>
 
             <form id="new-post" class="modal" method="post" action="{{ route('deep.posts.store') }}">
                 @csrf
-                <select name="type">
+                <select name="type" class="select-css">
                     <option value="text">Text</option>
                     <option value="image">Image</option>
                     <option value="video">Video</option>

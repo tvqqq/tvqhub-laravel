@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ config('deep.title') }} @yield('title')</title>
     <meta property="og:description" content="@yield('description', config('deep.description'))"/>
-    <meta property="og:image" content="@yield('ogimage', asset('packages/deep/images/logo-400.jpg'))"/>
-    <meta property="fb:app_id" content="534730943930964"/>
+    <meta property="og:image" content="@yield('ogimage', asset('packages/deep/images/logo-400.png'))"/>
+    <meta property="fb:app_id" content="949098545458729"/>
     <link rel="shortcut icon" type="image/png" href="{{ asset('packages/deep/images/favicon.png') }}"/>
     <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
     @stack('css')
@@ -15,19 +15,19 @@
 </head>
 <body>
 
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v4.0&appId=534730943930964&autoLogAppEvents=1"></script>
-
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-146431529-3"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-154201677-2"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() {
-        dataLayer.push(arguments);
-    }
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'UA-146431529-3');
+
+    gtag('config', 'UA-154201677-2');
 </script>
+
+<!-- Facebook SDK -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0&appId=949098545458729&autoLogAppEvents=1"></script>
 
 <div class="container">
     <div class="top">
@@ -37,9 +37,6 @@
         <p>{{ config('deep.description') }}</p>
         <ul class="menu">
             <li><a href="{{ route('deep.indexVideo') }}">#video</a></li>
-            <li><a href="{{ config('deep.fb') }}" target="_blank">fb</a></li>
-            <li><a href="{{ config('deep.chat') }}" target="_blank">chat</a></li>
-            <li><a href="mailto:{{ config('deep.mail') }}">mail</a></li>
         </ul>
         <p></p>
     </div>
