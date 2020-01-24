@@ -28,7 +28,7 @@ $(function () {
     });
 
     // Show modal
-    $('#new-post-button').click(function (event) {
+    $('#btn-new-post').click(function (event) {
         $('#new-post').modal({
             fadeDuration: 250,
             fadeDelay: 0.80
@@ -50,7 +50,7 @@ $(function () {
             contentType: false,
             cache: false,
             success: function (data) {
-                toastr.success('Say oh yeahhhhhhh *.*', 'Success!');
+                toastr.success('Successfully posted!');
                 setTimeout(() => { location.reload()}, 2000);
             },
             error: function (data, errorThrown) {

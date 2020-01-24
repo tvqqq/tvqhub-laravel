@@ -41,12 +41,20 @@
             <span class="loader-ellips__dot"></span>
             <span class="loader-ellips__dot"></span>
         </div>
-        <p class="infinite-scroll-last">/* Hết rồi */</p>
+        <p class="infinite-scroll-last">/* The bottom of heart. */</p>
     </div>
 
     @auth
         @if (auth()->user()->id === 1)
-            <button id="new-post-button">New Post 😍</button>
+            <div id="btn-new-post">
+                <div class="button">
+                    <span>New Post</span>
+                    <svg>
+                        <polyline class="o1" points="0 0, 120 0, 120 45, 0 45, 0 0"></polyline>
+                        <polyline class="o2" points="0 0, 120 0, 120 45, 0 45, 0 0"></polyline>
+                    </svg>
+                </div>
+            </div>
 
             <form id="new-post" class="modal" method="post" action="{{ route('deep.posts.store') }}">
                 @csrf
