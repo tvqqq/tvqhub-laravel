@@ -25,7 +25,7 @@
                     <iframe src="https://www.youtube.com/embed/{{ $post->media }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
                             class="media-display"></iframe>
                 @endif
-                {{ Illuminate\Mail\Markdown::parse($post->content) }}
+                {{ $post->content ? Illuminate\Mail\Markdown::parse($post->content) : '' }}
                 <a href="{{ route('deep.posts.show', $post->id) }}" class="view-post">
                     <span>ღ</span> {{ $post->created_at->locale('vi_VN') }}
                 </a>
