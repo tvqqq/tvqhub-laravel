@@ -61,17 +61,20 @@ class DeepController extends Controller
         $this->isTVQ();
 
         $validatedData = $request->validate([
-            'type' => 'required'
+            'type' => 'required',
+            'content' => 'required_if:type,text',
+            'media_image_url' => 'required_if:type,image',
+            'media_video' => 'required_if:type,video',
         ]);
 
         $media = null;
         $resultCloudinary = null;
-        if ($request->file('media-image-upload')) {
-            $resultCloudinary = app(HCloudinary::class)->upload($request->file('media-image-upload')->getPathname(), self::CLOUDINARY_FOLDER);
-        } elseif ($request->get('media-image-url')) {
-            $resultCloudinary = app(HCloudinary::class)->upload($request->get('media-image-url'), self::CLOUDINARY_FOLDER);
+        if ($request->file('media_image_upload')) {
+            $resultCloudinary = app(HCloudinary::class)->upload($request->file('media_image_upload')->getPathname(), self::CLOUDINARY_FOLDER);
+        } elseif ($request->get('media_image_url')) {
+            $resultCloudinary = app(HCloudinary::class)->upload($request->get('media_image_url'), self::CLOUDINARY_FOLDER);
         } else {
-            $media = $request->get('media-video');
+            $media = $request->get('media_video');
         }
 
         if ($resultCloudinary) {

@@ -64,12 +64,12 @@
                     <option value="video">Video</option>
                 </select>
                 <div class="media-image media-input">
-                    <input type="file" name="media-image-upload"/>
+                    <input type="file" name="media_image_upload"/>
                     <small>- or -</small>
-                    <input type="text" name="media-image-url" placeholder="Image URL"/>
+                    <input type="text" name="media_image_url" placeholder="Image URL"/>
                 </div>
                 <div class="media-video media-input">
-                    <input type="text" name="media-video" placeholder="Video Youtube ID"/>
+                    <input type="text" name="media_video" placeholder="Video Youtube ID"/>
                 </div>
                 <textarea name="content" rows="20"></textarea>
                 <button type="submit">Add new post 🤗</button>
