@@ -37,6 +37,7 @@
         <p>{{ config('deep.description') }}</p>
         <ul class="menu">
             <li><a href="{{ route('deep.indexVideo') }}">#video</a></li>
+            <li><a href="https://tvqhub.com">#tvqhub</a></li>
         </ul>
         <p></p>
     </div>
