@@ -18,3 +18,12 @@ Route::get('/', function () {
 Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::group(['prefix' => 'ama', 'as' => 'ama.'], function() {
+        Route::get('/', 'Admin\AmaQuestionController@index')->name('index');
+        Route::get('{id}', 'Admin\AmaQuestionController@show')->name('detail');
+        Route::post('{id}', 'Admin\AmaQuestionController@update')->name('update');
+        Route::delete('{id}', 'Admin\AmaQuestionController@destroy')->name('destroy');
+    });
+});
