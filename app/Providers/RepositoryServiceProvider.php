@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Repositories as Repo;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -14,8 +15,7 @@ class RepositoryServiceProvider extends ServiceProvider
     private function registerRepo()
     {
         return [
-            \App\Repositories\Interfaces\AmaQuestionRepositoryInterface::class =>
-                \App\Repositories\AmaQuestionRepository::class,
+            Repo\AmaQuestionRepositoryInterface::class => Repo\AmaQuestionRepository::class,
         ];
     }
 
