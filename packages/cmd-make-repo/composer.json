@@ -1,0 +1,16 @@
+{
+    "name": "tvq/cmd-make-repo",
+    "description": "Create a repository by typing command artisan",
+    "authors": [
+        {
+            "name": "Tat Vi Quyen",
+            "email": "tvq9612@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "CmdMakeRepo\\": "src/"
+        }
+    }
+}
