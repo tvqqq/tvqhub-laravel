@@ -36,7 +36,8 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
-            "Deep\\": "packages/deep/src/"
+            "Deep\\": "packages/deep/src/",
+            "CmdMakeRepo\\": "packages/cmd-make-repo/src/"
         },
         "classmap": [
             "database/seeds",

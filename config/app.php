@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         \Deep\Providers\DeepServiceProvider::class,
+        \CmdMakeRepo\CmdMakeRepoServiceProvider::class,
 
         /*
          * Application Service Providers...
