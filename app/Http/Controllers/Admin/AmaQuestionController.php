@@ -23,7 +23,6 @@ class AmaQuestionController extends Controller
 
     public function index()
     {
-        $a = $this->repository->find(['id' => 1]);
-        dd($a);
+        return view('ama.index');
     }
 }
