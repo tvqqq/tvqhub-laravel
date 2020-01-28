@@ -12,5 +12,4 @@ class AmaQuestionRepository extends BaseRepository implements AmaQuestionReposit
     {
         return AmaQuestion::class;
     }
-
 }

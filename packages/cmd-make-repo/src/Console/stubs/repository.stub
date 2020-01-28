@@ -9,7 +9,6 @@ class DummyClass extends BaseRepository implements DummyClassInterface
 {
     public function model()
     {
-        // return;
+        // return ;
     }
-
 }
