@@ -1,7 +1,7 @@
 <?php
     $menu = [
         'home' => 'Home',
-        'ama.index' => 'AMA'
+        'ama.' => 'AMA'
     ]
 ?>
 

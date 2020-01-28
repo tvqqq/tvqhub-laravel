@@ -13,4 +13,12 @@ interface BaseRepositoryInterface
      * @return mixed
      */
     public function create(array $data);
+
+    /**
+     * Find a record with trashed (soft delete) by id.
+     *
+     * @param int $id
+     * @return mixed
+     */
+    public function findWithTrashed(int $id);
 }

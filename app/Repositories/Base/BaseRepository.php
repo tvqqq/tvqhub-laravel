@@ -12,7 +12,7 @@ abstract class BaseRepository implements BaseRepositoryInterface
     /**
      * @var Model
      */
-    protected $model;
+    public $model;
 
     /**
      * @var string
@@ -31,13 +31,18 @@ abstract class BaseRepository implements BaseRepositoryInterface
     }
 
     /**
-     * Create a new record.
-     *
-     * @param array $data
-     * @return mixed
+     * @inheritDoc
      */
     public function create(array $data)
     {
-        return $this->model->create($data);
+        return $this->query->create($data);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function findWithTrashed(int $id)
+    {
+        return $this->query->withTrashed()->findOrFail($id);
     }
 }
