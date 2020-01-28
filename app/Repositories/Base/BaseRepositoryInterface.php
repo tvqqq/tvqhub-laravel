@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 interface BaseRepositoryInterface
 {
     /**
-     * Find all records that match a given conditions
+     * Create a new record.
      *
-     * @param array $conditions
-     * @return Model[]
+     * @param array $data
+     * @return mixed
      */
-    public function find(array $conditions = []);
+    public function create(array $data);
 }

@@ -21,6 +21,7 @@ abstract class BaseRepository implements BaseRepositoryInterface
 
     /**
      * BaseRepository constructor.
+     *
      * @param Application $app
      * @throws RepositoryException
      * @throws BindingResolutionException
@@ -55,10 +56,13 @@ abstract class BaseRepository implements BaseRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * Create a new record.
+     *
+     * @param array $data
+     * @return mixed
      */
-    public function find(array $conditions = [])
+    public function create(array $data)
     {
-        return $this->model->query()->where($conditions)->get();
+        return $this->model->create($data);
     }
 }
