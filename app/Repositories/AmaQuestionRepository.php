@@ -8,8 +8,21 @@ use App\Repositories\AmaQuestionRepositoryInterface;
 
 class AmaQuestionRepository extends BaseRepository implements AmaQuestionRepositoryInterface
 {
-    public function model()
+    /**
+     * BaseRepository constructor.
+     *
+     * @param AmaQuestion $model
+     */
+    public function __construct(AmaQuestion $model)
     {
-        return AmaQuestion::class;
+        parent::__construct($model);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getLatestWithTrashed()
+    {
+        return $this->query->latest()->withTrashed()->get();
     }
 }

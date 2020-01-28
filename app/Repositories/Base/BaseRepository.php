@@ -10,49 +10,24 @@ use Illuminate\Database\Eloquent\Model;
 abstract class BaseRepository implements BaseRepositoryInterface
 {
     /**
-     * @var Application
-     */
-    protected $app;
-
-    /**
      * @var Model
      */
     protected $model;
 
     /**
+     * @var string
+     */
+    public $query;
+
+    /**
      * BaseRepository constructor.
      *
-     * @param Application $app
-     * @throws RepositoryException
-     * @throws BindingResolutionException
+     * @param Model $model
      */
-    public function __construct(Application $app)
+    public function __construct(Model $model)
     {
-        $this->app = $app;
-        $this->makeModel();
-    }
-
-    /**
-     * Specify Model class name
-     *
-     * @return string
-     */
-    abstract public function model();
-
-    /**
-     * @return Model
-     * @throws RepositoryException
-     * @throws BindingResolutionException
-     */
-    public function makeModel()
-    {
-        $model = $this->app->make($this->model());
-
-        if (!$model instanceof Model) {
-            throw new RepositoryException("Class {$this->model()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
-        }
-
-        return $this->model = $model;
+        $this->model = $model;
+        $this->query = $this->model->query();
     }
 
     /**

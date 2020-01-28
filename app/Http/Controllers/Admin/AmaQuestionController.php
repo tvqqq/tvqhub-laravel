@@ -23,6 +23,8 @@ class AmaQuestionController extends Controller
 
     public function index()
     {
-        return view('ama.index');
+        $data = $this->repository->getLatestWithTrashed();
+
+        return view('ama.index', compact('data'));
     }
 }
