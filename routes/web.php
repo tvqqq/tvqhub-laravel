@@ -19,6 +19,7 @@ Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('share/{id}', 'Admin\AmaQuestionController@share')->name('ama.share');
 Route::group(['middleware' => 'auth'], function() {
     Route::group(['prefix' => 'ama', 'as' => 'ama.'], function() {
         Route::get('/', 'Admin\AmaQuestionController@index');
@@ -27,6 +28,5 @@ Route::group(['middleware' => 'auth'], function() {
         Route::delete('{id}', 'Admin\AmaQuestionController@destroy')->name('destroy');
         Route::delete('force/{id}', 'Admin\AmaQuestionController@forceDelete')->name('forceDelete');
         Route::patch('restore/{id}', 'Admin\AmaQuestionController@restore')->name('restore');
-        Route::get('share/{id}', 'Admin\AmaQuestionController@share')->name('share');
     });
 });
