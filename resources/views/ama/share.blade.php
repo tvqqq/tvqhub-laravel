@@ -13,7 +13,7 @@
 
 <body>
 <script>
-    location.href = '{{ config('app.master_url') }}/ama';
+    location.href = '{{ config('tvqhub.base_domain') }}/ama';
 </script>
 </body>
 </html>
