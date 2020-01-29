@@ -12,6 +12,7 @@
         "cloudinary/cloudinary_php": "^1.16",
         "fideloper/proxy": "^4.0",
         "fruitcake/laravel-cors": "^1.0",
+        "guzzlehttp/guzzle": "^6.5",
         "laravel/framework": "^6.2",
         "laravel/tinker": "^1.0"
     },
