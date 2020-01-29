@@ -49,7 +49,7 @@ class AmaQuestionController extends Controller
         $data = $this->repository->create($validated);
 
         // Send mail notification
-        Mail::to(config('mail.admin'))->queue(new AMAQuestionSent($data));
+        Mail::to(config('tvqhub.mail_admin'))->queue(new AMAQuestionSent($data));
 
         return $this->responseSuccess($data);
     }

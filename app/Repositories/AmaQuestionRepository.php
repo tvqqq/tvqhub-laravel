@@ -23,7 +23,7 @@ class AmaQuestionRepository extends BaseRepository implements AmaQuestionReposit
      */
     public function getLatestWithTrashed()
     {
-        return $this->query->latest()->withTrashed()->get();
+        return $this->model->latest()->withTrashed()->get();
     }
 
     /**
