@@ -21,3 +21,7 @@ Route::group(['prefix' => 'ama'], function() {
     Route::get('/', 'API\AmaQuestionController@index');
     Route::post('/', 'API\AmaQuestionController@create');
 });
+
+Route::group(['prefix' => 'chinese-name'], function() {
+    Route::post('/', 'API\ChineseNameController@index');
+});
