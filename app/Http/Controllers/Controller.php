@@ -16,7 +16,7 @@ class Controller extends BaseController
         'message' => ''
     ];
 
-    private function __construct()
+    public function __construct()
     {
         $this->result['message'] = __('messages.fail');
     }
