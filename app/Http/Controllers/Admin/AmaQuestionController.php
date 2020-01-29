@@ -64,7 +64,7 @@ class AmaQuestionController extends Controller
         $question->update($data);
 
         // Return view with status
-        return back()->with('status', 'Answered!');
+        return redirect()->back()->with('status', 'Answered!');
     }
 
     /**
