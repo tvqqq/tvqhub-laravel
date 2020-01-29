@@ -43,7 +43,7 @@
                     <div class="col">
                         <a href="{{ route('ama.') }}" class="btn btn-secondary"><i
                                 class="fas fa-angle-left"></i> Back</a>
-                        <a href="https://www.facebook.com/dialog/share?app_id=949098545458729&display=popup&href={{ route('ama.', $question->id)  }}"
+                        <a href="https://www.facebook.com/dialog/share?app_id=949098545458729&display=popup&href={{ route('ama.share', $question->id)  }}"
                            class="btn btn-outline-info">
                             <i class="fab fa-facebook"></i> Share
                         </a>
