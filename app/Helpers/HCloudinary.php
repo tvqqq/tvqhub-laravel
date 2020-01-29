@@ -23,6 +23,14 @@ class HCloudinary
         ]);
     }
 
+    /**
+     * Function upload image
+     * When in dev environment, the image will upload to parent folder _local
+     *
+     * @param $filePath
+     * @param null $folder
+     * @return mixed
+     */
     public function upload($filePath, $folder = null)
     {
         return $this->uploader->upload($filePath, [
