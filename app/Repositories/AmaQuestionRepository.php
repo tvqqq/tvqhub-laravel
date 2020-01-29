@@ -25,4 +25,20 @@ class AmaQuestionRepository extends BaseRepository implements AmaQuestionReposit
     {
         return $this->query->latest()->withTrashed()->get();
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function getLatestAnsweredQuestion()
+    {
+        return $this->model->whereNotNull('answer')->latest()->get();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function countNoReply()
+    {
+        return $this->model->whereNull('answer')->count();
+    }
 }

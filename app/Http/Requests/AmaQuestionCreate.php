@@ -13,7 +13,7 @@ class AmaQuestionCreate extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class AmaQuestionCreate extends FormRequest
     public function rules()
     {
         return [
-            'question' => 'required|min:3'
+            'question' => 'required|string|between:3,500'
         ];
     }
 }

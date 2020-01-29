@@ -12,4 +12,18 @@ interface AmaQuestionRepositoryInterface extends BaseRepositoryInterface
      * @return mixed
      */
     public function getLatestWithTrashed();
+
+    /**
+     * Get lasted anwsered questions.
+     *
+     * @return mixed
+     */
+    public function getLatestAnsweredQuestion();
+
+    /**
+     * Count questions without replied yet.
+     *
+     * @return mixed
+     */
+    public function countNoReply();
 }

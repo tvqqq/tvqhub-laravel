@@ -15,11 +15,6 @@ abstract class BaseRepository implements BaseRepositoryInterface
     public $model;
 
     /**
-     * @var string
-     */
-    public $query;
-
-    /**
      * BaseRepository constructor.
      *
      * @param Model $model
@@ -27,7 +22,6 @@ abstract class BaseRepository implements BaseRepositoryInterface
     public function __construct(Model $model)
     {
         $this->model = $model;
-        $this->query = $this->model->query();
     }
 
     /**
@@ -35,7 +29,7 @@ abstract class BaseRepository implements BaseRepositoryInterface
      */
     public function create(array $data)
     {
-        return $this->query->create($data);
+        return $this->model->create($data);
     }
 
     /**
@@ -43,6 +37,6 @@ abstract class BaseRepository implements BaseRepositoryInterface
      */
     public function findWithTrashed(int $id)
     {
-        return $this->query->withTrashed()->findOrFail($id);
+        return $this->model->withTrashed()->findOrFail($id);
     }
 }
