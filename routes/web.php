@@ -19,7 +19,6 @@ Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('share/{id}', 'Admin\AmaQuestionController@share')->name('ama.share');
 Route::group(['middleware' => 'auth'], function() {
     Route::group(['prefix' => 'ama', 'as' => 'ama.'], function() {
         Route::get('/', 'Admin\AmaQuestionController@index');
@@ -29,4 +28,17 @@ Route::group(['middleware' => 'auth'], function() {
         Route::delete('force/{id}', 'Admin\AmaQuestionController@forceDelete')->name('forceDelete');
         Route::patch('restore/{id}', 'Admin\AmaQuestionController@restore')->name('restore');
     });
+    Route::group(['prefix' => 'url', 'as' => 'url.'], function() {
+        Route::get('/', 'Admin\UrlController@index');
+        Route::get('{id}', 'Admin\UrlController@show')->name('detail');
+    });
+});
+
+// AMA
+Route::get('share/{id}', 'Admin\AmaQuestionController@share')->name('ama.share');
+
+// Shorten link
+Route::group(['domain' => 'ly.' . config('session.domain'), 'as' => 'site.url.'], function() {
+    Route::get('/', 'Site\UrlController@index')->name('index');
+    Route::post('/', 'Site\UrlController@create')->name('create');
 });
