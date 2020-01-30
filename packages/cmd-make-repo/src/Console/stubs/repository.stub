@@ -7,8 +7,13 @@ use App\Repositories\DummyClassInterface;
 
 class DummyClass extends BaseRepository implements DummyClassInterface
 {
-    public function model()
+    /**
+     * DummyClass constructor.
+     *
+     * @param Model $model
+     */
+    public function __construct(Model $model)
     {
-        // return ;
+        parent::__construct($model);
     }
 }

@@ -9,7 +9,7 @@ use App\Repositories\AmaQuestionRepositoryInterface;
 class AmaQuestionRepository extends BaseRepository implements AmaQuestionRepositoryInterface
 {
     /**
-     * BaseRepository constructor.
+     * AmaQuestionRepository constructor.
      *
      * @param AmaQuestion $model
      */
