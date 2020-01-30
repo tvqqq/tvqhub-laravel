@@ -17,7 +17,6 @@ class CreateUrlsTable extends Migration
             $table->bigIncrements('id');
             $table->string('slug')->index();
             $table->text('origin_url');
-            $table->unsignedBigInteger('user_id');
             $table->text('note')->nullable();
             $table->timestamps();
             $table->softDeletes();
