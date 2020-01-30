@@ -18,7 +18,8 @@ class AmaQuestionController extends Controller
      * AmaQuestionController constructor.
      * @param AmaQuestionRepositoryInterface $repository
      */
-    public function __construct(AmaQuestionRepositoryInterface $repository) {
+    public function __construct(AmaQuestionRepositoryInterface $repository)
+    {
         $this->repository = $repository;
     }
 
