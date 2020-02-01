@@ -45,7 +45,7 @@ class AmaQuestionController extends Controller
     {
         $question = $this->repository->findWithTrashed($id);
 
-        return view('ama.detail', compact('question'));
+        return view('ama.show', compact('question'));
     }
 
     /**

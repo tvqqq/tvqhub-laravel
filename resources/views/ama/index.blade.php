@@ -26,7 +26,7 @@
                                 $trClass = '';
                         @endphp
                         <tr class="{{ $trClass }} text-center clickable-row"
-                            data-href='{{ route('ama.detail', $question) }}'>
+                            data-href='{{ route('ama.show', $question) }}'>
                             <td>{{ $question->id }}</td>
                             <td class="text-left">{{ Str::limit($question->question, 50) }}</td>
                             <td>{{ $question->created_at }}</td>
