@@ -28,10 +28,9 @@ Route::group(['middleware' => 'auth'], function() {
         Route::delete('force/{id}', 'Admin\AmaQuestionController@forceDelete')->name('forceDelete');
         Route::patch('restore/{id}', 'Admin\AmaQuestionController@restore')->name('restore');
     });
-    Route::group(['prefix' => 'url', 'as' => 'url.'], function() {
-        Route::get('/', 'Admin\UrlController@index');
-        Route::get('{id}', 'Admin\UrlController@show')->name('detail');
-    });
+    Route::resource('chinese-playlist', 'Admin\ChinesePlaylistController')->names([
+        'index' => 'chinese-playlist.'
+    ]);
 });
 
 // AMA

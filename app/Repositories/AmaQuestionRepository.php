@@ -29,6 +29,14 @@ class AmaQuestionRepository extends BaseRepository implements AmaQuestionReposit
     /**
      * @inheritDoc
      */
+    public function findWithTrashed(int $id)
+    {
+        return $this->model->withTrashed()->findOrFail($id);
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function getLatestAnsweredQuestion()
     {
         return $this->model->whereNotNull('answer')->latest()->get();

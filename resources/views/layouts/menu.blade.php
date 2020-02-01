@@ -1,7 +1,8 @@
 <?php
     $menu = [
         'home' => 'Home',
-        'ama.' => 'AMA'
+        'ama.' => 'AMA',
+        'chinese-playlist.' => 'Chinese Playlist',
     ]
 ?>
 

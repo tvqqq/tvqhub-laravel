@@ -14,6 +14,14 @@ interface AmaQuestionRepositoryInterface extends BaseRepositoryInterface
     public function getLatestWithTrashed();
 
     /**
+     * Find a record with trashed (soft delete) by id.
+     *
+     * @param int $id
+     * @return mixed
+     */
+    public function findWithTrashed(int $id);
+
+    /**
      * Get lasted anwsered questions.
      *
      * @return mixed

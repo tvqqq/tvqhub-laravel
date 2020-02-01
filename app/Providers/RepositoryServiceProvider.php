@@ -16,6 +16,8 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         return [
             Repo\AmaQuestionRepositoryInterface::class => Repo\AmaQuestionRepository::class,
+            Repo\UrlRepositoryInterface::class => Repo\UrlRepository::class,
+            Repo\ChinesePlaylistRepositoryInterface::class => Repo\ChinesePlaylistRepository::class,
         ];
     }
 

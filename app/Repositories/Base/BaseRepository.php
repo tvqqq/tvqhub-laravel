@@ -35,8 +35,13 @@ abstract class BaseRepository implements BaseRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function findWithTrashed(int $id)
+    public function getLatest()
     {
-        return $this->model->withTrashed()->findOrFail($id);
+        return $this->model->latest()->get();
+    }
+
+    public function findById(int $id)
+    {
+        return $this->model->findOrFail($id);
     }
 }
