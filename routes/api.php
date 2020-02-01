@@ -27,5 +27,5 @@ Route::group(['prefix' => 'chinese-name'], function() {
 });
 
 Route::group(['prefix' => 'chinese-playlist'], function() {
-    Route::post('/', 'API\ChinesePlaylistController@index');
+    Route::get('/', 'API\ChinesePlaylistController@index');
 });
