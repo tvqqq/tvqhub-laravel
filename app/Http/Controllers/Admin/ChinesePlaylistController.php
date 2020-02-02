@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\HCommon;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ChinesePlaylistRequest;
 use App\Repositories\ChinesePlaylistRepositoryInterface;
@@ -57,6 +58,7 @@ class ChinesePlaylistController extends Controller
     {
         $validated = $request->validated();
 
+        $validated['color'] = $validated['color'] ?? app(HCommon::class)->randomHexColor();
         $result = $this->repository->create($validated);
 
         return redirect()->route('chinese-playlist.create')->with('status', 'Successfully added!');
