@@ -61,7 +61,7 @@ class ChinesePlaylistController extends Controller
         $validated['color'] = $validated['color'] ?? app(HCommon::class)->randomHexColor();
         $result = $this->repository->create($validated);
 
-        return redirect()->route('chinese-playlist.create')->with('status', 'Successfully added!');
+        return back()->with('status', 'Successfully added!');
     }
 
     /**
@@ -102,7 +102,7 @@ class ChinesePlaylistController extends Controller
         $validated = $request->validated();
         $item->update($validated);
 
-        return redirect()->route('chinese-playlist.update', $id)->with('status', 'Successfully updated!');
+        return back()->with('status', 'Successfully updated!');
     }
 
     /**
