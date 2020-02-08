@@ -24,7 +24,7 @@ sudo chmod 775 app storage bootstrap -R
 #### Install dependencies
 
 ```
-sudo composer install
+sudo composer install --optimize-autoloader --no-dev
 sudo npm install
 ```
 
