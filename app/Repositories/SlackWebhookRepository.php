@@ -6,6 +6,7 @@ use App\Helpers\HGuzzle;
 use App\Models\SlackWebhook;
 use App\Repositories\Base\BaseRepository;
 use App\Repositories\SlackWebhookRepositoryInterface;
+use Google\Cloud\Translate\V2\TranslateClient;
 
 class SlackWebhookRepository extends BaseRepository implements SlackWebhookRepositoryInterface
 {
@@ -42,8 +43,18 @@ class SlackWebhookRepository extends BaseRepository implements SlackWebhookRepos
         $json = file_get_contents('https://quotes.rest/qod.json');
         $obj = json_decode($json, true);
         $quotes = $obj['contents']['quotes'][0];
-        $text = $quotes['quote'] . ' - ' . $quotes['author'];
+        $quoteText = $quotes['quote'] . ' - ' . $quotes['author'];
 
+        // Translate to Vietnamese
+        $translateClient = new TranslateClient([
+            'key' => config('tvqhub.google_api_key')
+        ]);
+        $translate = $translateClient->translate($quotes['quote'], [
+            'source' => 'en',
+            'target' => 'vi'
+        ]);
+
+        $text = $quoteText . "\n" . '(Google dịch: ' . $translate['text'] . ')';
         $this->sendSlackMsg(['text' => $text]);
     }
 }

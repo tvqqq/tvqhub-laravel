@@ -8,4 +8,6 @@ return [
 
     'slack_webhook' => env('SLACK_WEBHOOK'),
 
+    'google_api_key' => env('GOOGLE_API_KEY'),
+
 ];
