@@ -3,6 +3,7 @@
         'home' => 'Home',
         'ama.' => 'AMA',
         'chinese-playlist.' => 'Chinese Playlist',
+        //'shortlink.' => 'Short Link',
     ]
 ?>
 

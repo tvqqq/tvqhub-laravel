@@ -11,6 +11,17 @@
 |
 */
 
+/**
+ * Subdomain need to defined all above main domain.
+ */
+
+// URL Shorten link
+Route::group(['domain' => 'ly.' . config('session.domain'), 'as' => 'site.url.'], function() {
+    Route::get('/', 'Site\UrlController@index')->name('index');
+    Route::post('/', 'Site\UrlController@create')->name('create');
+    Route::get('/{vue_capture?}', function () { return view('url.site.index'); })->where('vue_capture', '[\/\w\.-]*');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -18,6 +29,9 @@ Route::get('/', function () {
 Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// AMA share question to FB
+Route::get('share/{id}', 'Admin\AmaQuestionController@share')->name('ama.share');
 
 Route::group(['middleware' => 'auth'], function() {
     Route::group(['prefix' => 'ama', 'as' => 'ama.'], function() {
@@ -31,13 +45,4 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('chinese-playlist', 'Admin\ChinesePlaylistController')->names([
         'index' => 'chinese-playlist.'
     ]);
-});
-
-// AMA
-Route::get('share/{id}', 'Admin\AmaQuestionController@share')->name('ama.share');
-
-// Shorten link
-Route::group(['domain' => 'ly.' . config('session.domain'), 'as' => 'site.url.'], function() {
-    Route::get('/', 'Site\UrlController@index')->name('index');
-    Route::post('/', 'Site\UrlController@create')->name('create');
 });
