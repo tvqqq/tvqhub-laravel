@@ -14,7 +14,7 @@
                             <div class="text-center mt-4">
                                 <hr width="10%">
                                 <strong class="d-block mb-2">
-                                    <router-link to="/">Generated Short Link</router-link>
+                                    <router-link to="/">Generate Short Link</router-link>
                                     <span class="mx-2">&bull;</span>
                                     <router-link to="/counter">URL Click Counter</router-link>
                                 </strong>
@@ -24,6 +24,7 @@
                                         href="https://www.shorturl.at" target="_blank">shorturl.at</a></span>
                                 </p>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -31,6 +32,14 @@
         </div>
     </div>
 </template>
+
+<script>
+    export default {
+        mounted() {
+            $('[data-toggle="tooltip"]').tooltip();
+        }
+    }
+</script>
 
 <style lang="scss">
     // Bootstrap

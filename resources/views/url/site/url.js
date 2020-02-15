@@ -5,6 +5,7 @@ window.Vue = require('vue');
 Vue.use(VueRouter);
 
 Vue.component('app', require('./components/App').default);
+Vue.component('validation-errors', require('../../../js/components/ValidationErrorsComponent').default);
 
 import Home from './components/Home';
 import Counter from './components/Counter';

@@ -32,12 +32,17 @@ class UrlController extends Controller
     {
         $validated = $request->validated();
 
-        $shortLink = $this->repository->createShortLink($validated['origin_url']);
+        $originUrl = $validated['origin_url'];
+        if ($existed = $this->repository->checkOriginLinkExisted($originUrl)) {
+            return $this->responseSuccess($existed);
+        }
+
+        $shortLink = $this->repository->createShortLink($originUrl);
         $result = $this->repository->create([
-            'origin_url' => $validated['origin_url'],
+            'origin_url' => $originUrl,
             'slug' => $shortLink
         ]);
 
-        // return
+        return $this->responseSuccess($result);
     }
 }

@@ -13,4 +13,12 @@ interface UrlRepositoryInterface extends BaseRepositoryInterface
      * @return mixed
      */
     public function createShortLink(string $originUrl);
+
+    /**
+     * Check origin url has existed in system yet.
+     *
+     * @param string $originUrl
+     * @return mixed
+     */
+    public function checkOriginLinkExisted(string $originUrl);
 }

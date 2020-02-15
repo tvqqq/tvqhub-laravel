@@ -26,9 +26,17 @@ class UrlRepository extends BaseRepository implements UrlRepositoryInterface
         $shortLink = null;
         do {
             $shortLink = $this->generateShortLink($originUrl);
-        } while (!$this->checkShortLinkExisted($shortLink));
+        } while ($this->checkShortLinkExisted($shortLink));
 
         return $shortLink;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function checkOriginLinkExisted(string $originUrl)
+    {
+        return $this->model->where('origin_url', $originUrl)->first();
     }
 
     /**
