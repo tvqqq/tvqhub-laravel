@@ -8,6 +8,7 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                 <tr class="text-center">
+                    <th width="2%">#</th>
                     <th>IP</th>
                     <th>Location</th>
                     <th width="25%">Date</th>
@@ -16,6 +17,7 @@
                 <tbody>
                 @foreach ($item->url_details as $detail)
                     <tr class="text-center">
+                        <td>{{ $detail->id }}</td>
                         <td>{{ $detail->params['ip'] }}</td>
                         <td>
                             @isset($detail->params['ip_tracking'])

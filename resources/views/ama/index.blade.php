@@ -10,9 +10,9 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr class="text-center">
-                        <th>ID</th>
-                        <th width="65%">Question</th>
-                        <th>Date</th>
+                        <th width="2%">#</th>
+                        <th>Question</th>
+                        <th width="25%">Date</th>
                     </tr>
                     </thead>
                     <tbody>

@@ -14,9 +14,9 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr class="text-center">
-                        <th>ID</th>
-                        <th width="75%">Song - Artist</th>
-                        <th width="20%">Date</th>
+                        <th width="2%">#</th>
+                        <th>Song - Artist</th>
+                        <th width="25%">Date</th>
                     </tr>
                     </thead>
                     <tbody>
