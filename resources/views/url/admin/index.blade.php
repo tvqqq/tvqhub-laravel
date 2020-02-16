@@ -12,11 +12,11 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr class="text-center">
-                        <th>ID</th>
-                        <th width="15%">Slug</th>
+                        <th width="2%">#</th>
+                        <th>Slug</th>
                         <th>Origin Url</th>
+                        <th>Clicks</th>
                         <th width="25%">Date</th>
-                        <th width="5%">Clicks</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -27,8 +27,8 @@
                             </td>
                             <td>{{ $item->slug }}</td>
                             <td class="text-left"><a href="{{ $item->origin_url }}" target="_blank">{{ $item->origin_url }}</a></td>
-                            <td>{{ $item->created_at }}</td>
                             <td>{{ count($item->url_details) }}</td>
+                            <td>{{ $item->created_at }}</td>
                         </tr>
                     @endforeach
                     </tbody>
