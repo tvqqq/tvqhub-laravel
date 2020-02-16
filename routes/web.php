@@ -19,6 +19,8 @@
 Route::group(['domain' => 'ly.' . config('session.domain'), 'as' => 'site.url.'], function() {
     Route::get('/', 'Site\UrlController@index')->name('index');
     Route::post('/', 'Site\UrlController@create')->name('create');
+    Route::post('/counter', 'Site\UrlController@counter')->name('counter');
+    Route::get('/{any}', 'Site\UrlController@redirect')->name('redirect');
     Route::get('/{vue_capture?}', function () { return view('url.site.index'); })->where('vue_capture', '[\/\w\.-]*');
 });
 

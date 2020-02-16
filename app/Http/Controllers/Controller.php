@@ -16,11 +16,6 @@ class Controller extends BaseController
         'message' => ''
     ];
 
-    public function __construct()
-    {
-        $this->result['message'] = __('messages.fail');
-    }
-
     protected function responseSuccess($data, $meta = null)
     {
         $this->result = [
@@ -32,9 +27,15 @@ class Controller extends BaseController
         return response($this->result, 200);
     }
 
-    protected function responseFail($error)
+    protected function responseFail($error, $code = 400)
     {
+        $this->result['message'] = __('messages.fail');
         $this->result['error'] = $error;
-        return response($this->result, 400);
+        return response($this->result, $code);
+    }
+
+    protected function responseNotFound()
+    {
+        return $this->responseFail('Data not found.', 404);
     }
 }

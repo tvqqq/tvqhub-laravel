@@ -9,7 +9,7 @@
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-body">
-                            <router-view></router-view>
+                            <router-view :backend="backend"></router-view>
 
                             <div class="text-center mt-4">
                                 <hr width="10%">
@@ -35,6 +35,7 @@
 
 <script>
     export default {
+        props: ['backend'],
         mounted() {
             $('[data-toggle="tooltip"]').tooltip();
         }

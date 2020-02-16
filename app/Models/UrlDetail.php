@@ -8,7 +8,13 @@ class UrlDetail extends Model
 {
     protected $guarded = ['id'];
 
+    protected $touches = ['url'];
+
+    protected $casts = [
+        'params' => 'array'
+    ];
+
     public function url() {
-        return $this->hasOne(Url::class);
+        return $this->belongsTo(Url::class);
     }
 }

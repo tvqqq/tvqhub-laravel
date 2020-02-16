@@ -9,6 +9,7 @@ Vue.component('validation-errors', require('../../../js/components/ValidationErr
 
 import Home from './components/Home';
 import Counter from './components/Counter';
+import NotFound from './components/404';
 
 const router = new VueRouter({
     mode: 'history',
@@ -20,7 +21,11 @@ const router = new VueRouter({
         {
             path: '/counter',
             component: Counter
-        }
+        },
+        {
+            path: '*',
+            component: NotFound
+        },
     ]
 });
 

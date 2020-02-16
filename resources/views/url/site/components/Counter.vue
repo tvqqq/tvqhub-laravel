@@ -6,22 +6,28 @@
         </p>
         <div class="input-group input-group-lg">
             <input type="text" class="form-control" placeholder="Enter here the code of shorten URL"
-                   aria-label="Enter here the code of shorten URL" aria-describedby="button-submit">
+                   aria-label="Enter here the code of shorten URL" aria-describedby="button-submit" maxlength="6"
+                   v-model="slug">
             <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button" id="button-submit"><strong>Track Clicks
-                </strong></button>
+                <button class="btn btn-outline-secondary" type="button" id="button-submit" @click.prevent="submit()"
+                        :disabled="isDisabled">
+                    <strong>Track Clicks</strong>
+                </button>
             </div>
         </div>
-        <div class="result mt-2 alert alert-info">
-            <transition name="fade">
+        <div class="result mt-2">
+            <div class="alert alert-info" v-if="success">
                 <ul>
-                    <li>Short link: <strong>https://ly.tvqhub.com/abcxyz</strong></li>
-                    <li>Original link: <strong>https://tvqhub.com</strong></li>
-                    <li>Total clicks: <strong>12</strong></li>
-                    <li>Created at: <strong>2020-02-01 10:00:00</strong></li>
-                    <li>Last clicked: <strong>2020-02-01 12:00:00</strong></li>
+                    <li>Short link: <strong>{{ backend.domain }}/{{ data.slug }}</strong></li>
+                    <li>Original link: <strong>{{ data.origin_url }}</strong></li>
+                    <li>Total clicks: <strong>{{ data.clicks }}</strong></li>
+                    <li>Created: <strong>{{ data.created_at }}</strong></li>
+                    <li>Last clicked: <strong>{{ data.updated_at }}</strong></li>
                 </ul>
-            </transition>
+            </div>
+            <div class="alert alert-warning" v-if="isNotFound">
+                This short link code is not existed in system.
+            </div>
         </div>
     </div>
 </template>
@@ -29,11 +35,43 @@
 <script>
     export default {
         name: 'Counter',
+        props: ['backend'],
         data() {
-            return {}
+            return {
+                success: false,
+                isLoading: false,
+                isNotFound: false,
+                slug: '',
+                data: null,
+            }
         },
-        mounted() {
-            console.log('Component mounted.')
+        computed: {
+            isDisabled() {
+                return this.isLoading || this.slug.length < 6;
+            },
+        },
+        methods: {
+            submit() {
+                this.isLoading = true;
+                axios({
+                    method: 'POST',
+                    url: '/counter',
+                    data: {
+                        slug: this.slug
+                    }
+                }).then(response => {
+                    this.isLoading = false;
+                    this.isNotFound = false;
+                    this.success = response.data.success;
+                    this.data = response.data.data;
+                }).catch(error => {
+                    this.isLoading = false;
+                    if (error.response.status === 404) {
+                        this.success = false;
+                        this.isNotFound = true;
+                    }
+                });
+            }
         }
     }
 </script>
