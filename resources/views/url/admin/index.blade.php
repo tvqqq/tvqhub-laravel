@@ -23,7 +23,7 @@
                     @foreach ($data as $item)
                         <tr class="text-center">
                             <td class="text-bold">
-                                <a href="{{ route('url.admin.show', $item) }}">{{ $item->id }}</a>
+                                <a href="{{ route('url.show', $item) }}">{{ $item->id }}</a>
                             </td>
                             <td>{{ $item->slug }}</td>
                             <td class="text-left"><a href="{{ $item->origin_url }}" target="_blank">{{ $item->origin_url }}</a></td>
