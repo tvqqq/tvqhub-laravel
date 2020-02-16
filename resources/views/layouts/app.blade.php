@@ -20,6 +20,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/datatables/datatables.min.css') }}" rel="stylesheet">
     @stack('css')
 </head>
 <body>
@@ -94,6 +95,14 @@
     </main>
 </div>
 <script src="{{ asset('vendor/jquery/jquery-3.4.1.min.js') }}"></script>
+<script src="{{ asset('vendor/datatables/datatables.min.js') }}"></script>
+<script>
+    jQuery(document).ready(function ($) {
+        $('#dataTable').DataTable({
+            'order': [0, 'desc'],
+        });
+    });
+</script>
 @stack('js')
 </body>
 </html>

@@ -39,20 +39,11 @@
     </div>
 @endsection
 
-@push('css')
-    <link href="{{ asset('vendor/datatables/datatables.min.css') }}" rel="stylesheet">
-@endpush
-
 @push('js')
-    <script src="{{ asset('vendor/datatables/datatables.min.js') }}"></script>
     <script>
         jQuery(document).ready(function ($) {
             $(".clickable-row").click(function () {
                 window.location = $(this).data("href");
-            });
-
-            $('#dataTable').DataTable({
-                'order': [ 0, 'desc' ],
             });
         });
     </script>

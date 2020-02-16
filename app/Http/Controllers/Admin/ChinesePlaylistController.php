@@ -19,7 +19,7 @@ class ChinesePlaylistController extends Controller
     protected $repository;
 
     /**
-     * AmaQuestionController constructor.
+     * ChinesePlaylistController constructor.
      * @param ChinesePlaylistRepositoryInterface $repository
      */
     public function __construct(ChinesePlaylistRepositoryInterface $repository) {

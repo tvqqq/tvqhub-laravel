@@ -47,4 +47,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('chinese-playlist', 'Admin\ChinesePlaylistController')->names([
         'index' => 'chinese-playlist.'
     ]);
+    Route::resource('url', 'Admin\UrlController')->names([
+        'index' => 'url.'
+    ]);
 });

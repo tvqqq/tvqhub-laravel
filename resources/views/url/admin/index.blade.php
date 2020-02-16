@@ -1,12 +1,10 @@
 @extends('layouts.app')
-@section('title', 'Chinese Playlist')
+@section('title', 'Short Link (URL)')
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            <strong>Chinese Playlist</strong>
-            <a class="btn btn-outline-primary btn-sm float-right" href="{{ route('chinese-playlist.create') }}"><i
-                    class="fas fa-plus-circle"></i> Add New</a>
+            <strong>Short Link</strong>
         </div>
 
         <div class="card-body">
@@ -15,20 +13,22 @@
                     <thead>
                     <tr class="text-center">
                         <th>ID</th>
-                        <th width="75%">Song - Artist</th>
-                        <th width="20%">Date</th>
+                        <th width="15%">Slug</th>
+                        <th>Origin Url</th>
+                        <th width="25%">Date</th>
+                        <th width="5%">Clicks</th>
                     </tr>
                     </thead>
                     <tbody>
                     @foreach ($data as $item)
                         <tr class="text-center">
                             <td class="text-bold">
-                                <a href="{{ route('chinese-playlist.show', $item) }}">{{ $item->id }}</a>
+                                <a href="{{ route('url.admin.show', $item) }}">{{ $item->id }}</a>
                             </td>
-                            <td class="text-left">
-                                {{ $item->vn_name }} ({{ $item->cn_name }}) - {{ $item->artist }}
-                            </td>
+                            <td>{{ $item->slug }}</td>
+                            <td class="text-left"><a href="{{ $item->origin_url }}" target="_blank">{{ $item->origin_url }}</a></td>
                             <td>{{ $item->created_at }}</td>
+                            <td>{{ count($item->url_details) }}</td>
                         </tr>
                     @endforeach
                     </tbody>

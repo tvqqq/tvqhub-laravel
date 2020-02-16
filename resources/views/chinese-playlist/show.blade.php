@@ -8,7 +8,7 @@
             <form method="POST" action="{{ route('chinese-playlist.update', $item->id) }}">
                 @csrf
                 @method('PUT')
-                @include('layouts.info-show')
+                @include('layouts.info')
 
                 <div class="form-group">
                     <label for="cn_name">Chinese name:</label>
