@@ -1,7 +1,7 @@
 <?php
 
 Route::group([
-    'domain' => 'deep.' . config('session.domain'),
+    'domain' => 'deep' . config('session.domain'),
     'middleware' => 'web',
     'as' => 'deep.',
 ], function() {

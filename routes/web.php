@@ -16,7 +16,7 @@
  */
 
 // URL Shorten link
-Route::group(['domain' => 'ly.' . config('session.domain'), 'as' => 'site.url.'], function() {
+Route::group(['domain' => 'ly' . config('session.domain'), 'as' => 'url.site.'], function() {
     Route::get('/', 'Site\UrlController@index')->name('index');
     Route::post('/', 'Site\UrlController@create')->name('create');
     Route::post('/counter', 'Site\UrlController@counter')->name('counter');
