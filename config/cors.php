@@ -21,7 +21,11 @@ return [
      * You can enable CORS for 1 or multiple paths.
      * Example: ['api/*']
      */
-    'paths' => ['api/*'],
+    'paths' => [
+        'airlock/csrf-cookie',
+        'login',
+        'api/*'
+    ],
 
     /*
     * Matches the request method. `[*]` allows all methods.
@@ -56,5 +60,5 @@ return [
     /*
      * Sets the Access-Control-Allow-Credentials header.
      */
-    'supports_credentials' => false,
+    'supports_credentials' => true,
 ];

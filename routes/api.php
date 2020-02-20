@@ -17,15 +17,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['prefix' => 'ama'], function() {
-    Route::get('/', 'API\AmaQuestionController@index');
-    Route::post('/', 'API\AmaQuestionController@create');
-});
+Route::group(['middleware' => 'auth:airlock'], function() {
+    Route::group(['prefix' => 'ama'], function() {
+        Route::get('/', 'API\AmaQuestionController@index');
+        Route::post('/', 'API\AmaQuestionController@create');
+    });
 
-Route::group(['prefix' => 'chinese-name'], function() {
-    Route::post('/', 'API\ChineseNameController@index');
-});
+    Route::group(['prefix' => 'chinese-name'], function() {
+        Route::post('/', 'API\ChineseNameController@index');
+    });
 
-Route::group(['prefix' => 'chinese-playlist'], function() {
-    Route::get('/', 'API\ChinesePlaylistController@index');
+    Route::group(['prefix' => 'chinese-playlist'], function() {
+        Route::get('/', 'API\ChinesePlaylistController@index');
+    });
 });
