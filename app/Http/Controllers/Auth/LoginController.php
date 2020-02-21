@@ -41,7 +41,7 @@ class LoginController extends Controller
 
     /**
      * Function login to access route having middleware Airlock.
-     * Using method onceUsingId to login.
+     * Using method loginUsingId to login.
      * And return a Bearer token if needed (for testing API on Postman).
      *
      * @return \Illuminate\Http\JsonResponse|bool
@@ -50,9 +50,9 @@ class LoginController extends Controller
     {
         $result = [
            'success' => true,
-           'message' => 'Login successfully.'
+           'message' => 'Login Airlock successfully.'
         ];
-        $userId = 2; // User to login airlock
+        $airlockUserId = 2;
 
         if (!empty(request('token'))) {
             // Eject any requests from outside on production
@@ -62,12 +62,12 @@ class LoginController extends Controller
                     'message' => 'Sorry, TVQhub is not allowed any requests that not come from our side.'
                 ]);
             } else {
-                $token = User::find($userId)->createToken('token-airlock');
+                $token = User::find($airlockUserId)->createToken('token-airlock');
                 $result['token'] = $token->plainTextToken;
             }
         }
         else {
-            Auth::onceUsingId($userId);
+            Auth::loginUsingId($airlockUserId);
         }
 
         return response()->json($result);
