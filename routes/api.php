@@ -17,6 +17,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('login-airlock', 'Auth\LoginController@loginAirlock');
+
 Route::group(['middleware' => 'auth:airlock'], function() {
     Route::group(['prefix' => 'ama'], function() {
         Route::get('/', 'API\AmaQuestionController@index');
