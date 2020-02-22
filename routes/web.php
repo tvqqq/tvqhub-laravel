@@ -30,7 +30,7 @@ Route::group(['domain' => 'ly' . config('session.domain'), 'as' => 'url.site.'],
 Auth::routes(['register' => false]);
 
 // No Auth needed
-Route::get('/', 'Controller@welcome');
+Route::view('/', 'welcome');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('share/{id}', 'Admin\AmaQuestionController@share')->name('ama.share'); // AMA share question to FB
 

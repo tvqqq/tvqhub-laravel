@@ -38,9 +38,4 @@ class Controller extends BaseController
     {
         return $this->responseFail('Data not found.', 404);
     }
-
-    public function welcome()
-    {
-        return view('welcome');
-    }
 }
