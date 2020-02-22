@@ -36,8 +36,23 @@
 <script>
     export default {
         props: ['backend'],
+        data() {
+            return {
+                airlock: null
+            }
+        },
         mounted() {
             $('[data-toggle="tooltip"]').tooltip();
+            this.airlock = this.$props.backend.api + '/airlock';
+            this.init();
+        },
+        methods: {
+            async init() {
+                await axios(this.airlock + '/csrf', {
+                    withCredentials: true
+                });
+                await axios.post(this.airlock + '/login');
+            }
         }
     }
 </script>

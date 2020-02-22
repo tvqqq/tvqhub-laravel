@@ -29,7 +29,8 @@ class UrlController extends Controller
     public function index()
     {
         $backend = [
-            'domain' => (request()->isSecure() ? 'https://' : 'http://') . 'ly' . config('session.domain')
+            'domain' => (request()->isSecure() ? 'https://' : 'http://') . 'ly' . config('session.domain'),
+            'api' => config('app.url') . '/api'
         ];
         return view('url.site.index', compact('backend'));
     }

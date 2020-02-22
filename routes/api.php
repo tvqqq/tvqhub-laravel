@@ -13,19 +13,22 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['prefix' => 'airlock', 'namespace' => 'Auth', 'as' => 'airlock.'], function() {
+    Route::get('csrf', 'AirlockController@csrf')->name('csrf');
+    Route::post('login', 'AirlockController@login')->name('login');
 });
 
-Route::group(['prefix' => 'ama'], function() {
-    Route::get('/', 'API\AmaQuestionController@index');
-    Route::post('/', 'API\AmaQuestionController@create');
-});
+Route::group(['middleware' => 'auth:airlock', 'namespace' => 'API', 'as' => 'api.'], function() {
+    Route::group(['prefix' => 'ama'], function() {
+        Route::get('/', 'AmaQuestionController@index');
+        Route::post('/', 'AmaQuestionController@create');
+    });
 
-Route::group(['prefix' => 'chinese-name'], function() {
-    Route::post('/', 'API\ChineseNameController@index');
-});
+    Route::group(['prefix' => 'chinese-name'], function() {
+        Route::post('/', 'ChineseNameController@index');
+    });
 
-Route::group(['prefix' => 'chinese-playlist'], function() {
-    Route::get('/', 'API\ChinesePlaylistController@index');
+    Route::group(['prefix' => 'chinese-playlist'], function() {
+        Route::get('/', 'ChinesePlaylistController@index');
+    });
 });
