@@ -35,7 +35,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('share/{id}', 'Admin\AmaQuestionController@share')->name('ama.share'); // AMA share question to FB
 
 // Admin (Auth needed)
-Route::group(['middleware' => 'auth', 'namespace' => 'Admin'], function() {
+Route::group(['middleware' => ['auth', 'prevent-airlock-user'], 'namespace' => 'Admin'], function() {
     Route::group(['prefix' => 'ama', 'as' => 'ama.'], function() {
         Route::get('/', 'AmaQuestionController@index');
         Route::get('{id}', 'AmaQuestionController@show')->name('show');
