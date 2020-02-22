@@ -26,7 +26,7 @@
                                 <a href="{{ route('url.show', $item) }}">{{ $item->id }}</a>
                             </td>
                             <td>{{ $item->slug }}</td>
-                            <td class="text-left"><a href="{{ $item->origin_url }}" target="_blank">{{ $item->origin_url }}</a></td>
+                            <td class="text-left"><a href="{{ $item->origin_url }}" target="_blank">{{ Str::limit($item->origin_url, 30) }}</a></td>
                             <td>{{ count($item->url_details) }}</td>
                             <td>{{ $item->created_at }}</td>
                         </tr>
