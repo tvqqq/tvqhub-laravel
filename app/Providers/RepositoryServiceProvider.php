@@ -19,6 +19,7 @@ class RepositoryServiceProvider extends ServiceProvider
             Repo\UrlRepositoryInterface::class => Repo\UrlRepository::class,
             Repo\ChinesePlaylistRepositoryInterface::class => Repo\ChinesePlaylistRepository::class,
             Repo\SlackWebhookRepositoryInterface::class => Repo\SlackWebhookRepository::class,
+            Repo\LarOptionRepositoryInterface::class => Repo\LarOptionRepository::class,
         ];
     }
 

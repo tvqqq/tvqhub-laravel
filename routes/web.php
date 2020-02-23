@@ -50,4 +50,7 @@ Route::group(['middleware' => ['auth', 'prevent-airlock-user'], 'namespace' => '
     Route::resource('url', 'UrlController')->names([
         'index' => 'url.'
     ]);
+    Route::resource('lar-options', 'LarOptionController')->names([
+        'index' => 'lar-options.'
+    ]);
 });
