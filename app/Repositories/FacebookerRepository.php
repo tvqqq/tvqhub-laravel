@@ -65,7 +65,10 @@ class FacebookerRepository extends BaseRepository implements FacebookerRepositor
 
         foreach ($crushes as $crush) {
             // Get latest post of crush
-            $post = $this->callApi($crush->fbid, 'posts', '&fields=id&limit=1');
+            $post = $this->callApi($crush->fbid, 'posts', '&fields=id&limit=2');
+            if (empty($post->data[0])) {
+                continue;
+            }
             $latestPostId = $post->data[0]->id;
             // Check post liked
             if ($this->checkLiked($latestPostId)) {
