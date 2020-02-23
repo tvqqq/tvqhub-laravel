@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Helpers\HGuzzle;
 use App\Models\FbFriend;
 use App\Models\FbLog;
-use App\LarOption;
+use App\Models\LarOption;
 use App\Repositories\Base\BaseRepository;
 use App\Repositories\FacebookerRepositoryInterface;
 
