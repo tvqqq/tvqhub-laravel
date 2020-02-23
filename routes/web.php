@@ -50,7 +50,8 @@ Route::group(['middleware' => ['auth', 'prevent-airlock-user'], 'namespace' => '
     Route::resource('url', 'UrlController')->names([
         'index' => 'url.'
     ]);
-    Route::resource('lar-options', 'LarOptionController')->names([
-        'index' => 'lar-options.'
-    ]);
+    Route::group(['prefix' => 'facebooker', 'as' => 'facebooker.'], function() {
+        Route::get('/', 'FacebookerController@index');
+        //Route::patch('/friends', 'FacebookerController@friends');
+    });
 });
