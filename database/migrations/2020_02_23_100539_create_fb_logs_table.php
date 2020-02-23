@@ -15,9 +15,10 @@ class CreateFbLogsTable extends Migration
     {
         Schema::create('fb_logs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('type', 50);
+            $table->string('type', 50)->index();
             $table->enum('alert', ['info', 'success', 'warning', 'danger']);
-            $table->text('content');
+            $table->text('content')->nullable();
+            $table->string('post_id', 50)->nullable()->unique();
             $table->timestamps();
         });
     }

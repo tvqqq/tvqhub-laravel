@@ -15,6 +15,14 @@ interface BaseRepositoryInterface
     public function create(array $data);
 
     /**
+     * Return false with message.
+     *
+     * @param $message
+     * @return array
+     */
+    public function returnFalse($message);
+
+    /**
      * Get all records order by latest.
      *
      * @return mixed

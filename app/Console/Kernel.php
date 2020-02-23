@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\FbAutoLike;
 use App\Console\Commands\SlackWebhook;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -27,6 +28,9 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command(SlackWebhook::class)
             ->dailyAt('6:00');
+
+        $schedule->command(FbAutoLike::class)
+            ->everyFiveMinutes()->withoutOverlapping()->runInBackground();
     }
 
     /**

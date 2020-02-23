@@ -27,6 +27,17 @@ abstract class BaseRepository implements BaseRepositoryInterface
     /**
      * @inheritDoc
      */
+    public function returnFalse($message)
+    {
+        return [
+            'success' => false,
+            'message' => $message
+        ];
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function create(array $data)
     {
         return $this->model->create($data);
