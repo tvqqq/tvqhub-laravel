@@ -30,7 +30,7 @@ class Kernel extends ConsoleKernel
             ->dailyAt('6:00');
 
         $schedule->command(FbAutoLike::class)
-            ->everyFiveMinutes()->withoutOverlapping()->runInBackground();
+            ->dailyAt('20:00')->withoutOverlapping()->runInBackground();
     }
 
     /**
