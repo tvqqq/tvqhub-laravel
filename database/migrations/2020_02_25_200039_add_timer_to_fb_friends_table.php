@@ -14,7 +14,7 @@ class AddTimerToFbFriendsTable extends Migration
     public function up()
     {
         Schema::table('fb_friends', function (Blueprint $table) {
-            $table->unsignedTinyInteger('timer')->after('is_crush');
+            $table->unsignedTinyInteger('timer')->nullable()->after('is_crush');
             $table->dropColumn('is_crush');
         });
     }
