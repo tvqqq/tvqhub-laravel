@@ -60,28 +60,28 @@ class FacebookerRepository extends BaseRepository implements FacebookerRepositor
      */
     public function autoLike()
     {
-        // Get list crushes
-        $crushes = $this->model->where('is_crush', 1)->get();
+        // Get list crushes by timer
+        $crush = $this->model->where('timer', now()->format('H'))->first();
+        if (!$crush) {
+            return;
+        }
 
-        foreach ($crushes as $crush) {
-            // Get latest post of crush
-            $post = $this->callApi($crush->fbid, 'posts', '&fields=id&limit=2');
-            if (empty($post->data[0])) {
-                continue;
-            }
-            $latestPostId = $post->data[0]->id;
-            // Check post liked
-            if ($this->checkLiked($latestPostId)) {
-                continue;
-            }
+        // Get latest post of crush
+        $post = $this->callApi($crush->fbid, 'posts', '&fields=id&limit=2');
+        if (empty($post->data[0])) {
+            return;
+        }
+        $latestPostId = $post->data[0]->id;
+        // Check post liked
+        if ($this->checkLiked($latestPostId)) {
+            return;
+        }
 
-            // Send like
-            $like = $this->callApi($latestPostId, 'likes', '&method=POST');
-
-            // Write log
-            if ($like->success) {
-                $this->writeLog('like', 'success', null, $latestPostId);
-            }
+        // Send like
+        $like = $this->callApi($latestPostId, 'likes', '&method=POST');
+        // Write log
+        if ($like->success) {
+            $this->writeLog('like', 'success', null, $latestPostId);
         }
     }
 
