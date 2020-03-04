@@ -63,15 +63,16 @@ sudo nano laravel-worker.conf
 
 ### laravel-worker.conf
 ```
-[program:laravel-worker]
+[program:laravel-worker-tvqhub]
 process_name=%(program_name)s_%(process_num)02d
-command=php /home/vagrant/code/ama/artisan queue:work --daemon --sleep=3 --tries=3 -vvv
+command=php /var/www/html/tvqhub-laravel/artisan queue:work --sleep=3 --tries=3
 autostart=true
 autorestart=true
 user=root
 numprocs=1
 redirect_stderr=true
-stdout_logfile=/home/vagrant/code/ama/storage/logs/worker.log
+stdout_logfile=/var/www/html/tvqhub-laravel/storage/logs/worker.log
+stopwaitsecs=3600
 ```
 
 ```
