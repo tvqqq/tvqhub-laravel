@@ -14,7 +14,7 @@
         "fruitcake/laravel-cors": "^1.0",
         "google/cloud-translate": "^1.6",
         "guzzlehttp/guzzle": "^6.5",
-        "laravel/airlock": "^0.2.1",
+        "laravel/sanctum": "^0.2.1",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "sentry/sentry-laravel": "^1.7.0"
