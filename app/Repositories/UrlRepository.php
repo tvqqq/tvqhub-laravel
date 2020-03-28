@@ -4,8 +4,8 @@ namespace App\Repositories;
 
 use App\Helpers\HGuzzle;
 use App\Repositories\Base\BaseRepository;
-use App\Url;
-use App\UrlDetail;
+use App\Models\Url;
+use App\Models\UrlDetail;
 
 class UrlRepository extends BaseRepository implements UrlRepositoryInterface
 {

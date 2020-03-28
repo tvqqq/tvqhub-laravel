@@ -13,11 +13,12 @@ const mix = require('laravel-mix');
 
 mix.disableNotifications();
 
+/* App */
 mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css');
 
-// Package deep
+/* Package deep */
 mix.copyDirectory('packages/deep/resources/assets', 'public/packages/deep');
 
-// Url Shortlink (resources/views/url/site)
+/* Url Shortlink (resources/views/url/site) */
 mix.js('resources/views/url/site/url.js', 'public/js');
