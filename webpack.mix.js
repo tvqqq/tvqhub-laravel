@@ -22,3 +22,6 @@ mix.copyDirectory('packages/deep/resources/assets', 'public/packages/deep');
 
 /* Url Shortlink (resources/views/url/site) */
 mix.js('resources/views/url/site/url.js', 'public/js');
+
+/* Facebooker */
+mix.js('resources/views/facebooker/facebooker.js', 'public/js');

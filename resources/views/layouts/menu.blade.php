@@ -4,6 +4,7 @@
         'ama.' => 'AMA',
         'chinese-playlist.' => 'Chinese Playlist',
         'url.' => 'Short Link (URL)',
+        'facebooker.' => 'Facebooker',
     ]
 ?>
 
