@@ -52,6 +52,6 @@ Route::group(['middleware' => ['auth', 'prevent-airlock-user'], 'namespace' => '
     ]);
     Route::group(['prefix' => 'facebooker', 'as' => 'facebooker.'], function() {
         Route::get('/', 'FacebookerController@index');
-        //Route::patch('/friends', 'FacebookerController@friends');
+        Route::get('friends', 'FacebookerController@friends')->name('api.friends');
     });
 });

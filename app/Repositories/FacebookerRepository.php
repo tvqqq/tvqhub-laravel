@@ -142,4 +142,14 @@ class FacebookerRepository extends BaseRepository implements FacebookerRepositor
             'post_id' => $postId
         ])->first();
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function getFriendsOnLocal($search = null)
+    {
+        return $this->model->when($search, function() use ($search) {
+            return $this->model->fullTextSearch('name', $search);
+        })->paginate(20);
+    }
 }

@@ -19,4 +19,10 @@ interface FacebookerRepositoryInterface extends BaseRepositoryInterface
      * @return mixed
      */
     public function autoLike();
+
+    /**
+     * Get list friend on local DB
+     * @param null $seach
+     */
+    public function getFriendsOnLocal($seach = null);
 }
