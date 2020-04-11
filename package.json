@@ -26,6 +26,7 @@
     "dependencies": {
         "bootstrap-vue": "^2.9.0",
         "laravel-vue-pagination": "^2.3.1",
+        "moment": "^2.24.0",
         "npm": "^6.13.4",
         "vue-router": "^3.1.5",
         "vue-select2": "^0.2.6"
