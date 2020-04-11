@@ -42,9 +42,26 @@ class FacebookerController extends Controller
      */
     public function friends()
     {
-        $search = request('search');
-        $friends = $this->repository->getFriendsOnLocal($search);
-
+        $friends = $this->repository->getFriendsOnLocal(request('search'));
         return $this->responseSuccess($friends);
+    }
+
+    /**
+     * Update current friend lists and write log for tracking.
+     */
+    public function updateFriends()
+    {
+        $result = $this->repository->getFriends();
+        return $this->responseSuccess($result, null);
+    }
+
+    /**
+     * Show logs
+     * @return ResponseFactory|Response
+     */
+    public function logs()
+    {
+        $result = $this->repository->getLogs(request('skip'));
+        return $this->responseSuccess($result, null);
     }
 }

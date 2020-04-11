@@ -22,7 +22,13 @@ interface FacebookerRepositoryInterface extends BaseRepositoryInterface
 
     /**
      * Get list friend on local DB
-     * @param null $seach
+     * @param string $seach
      */
     public function getFriendsOnLocal($seach = null);
+
+    /**
+     * Get list friend on local DB
+     * @param int $skip
+     */
+    public function getLogs($skip = 0);
 }

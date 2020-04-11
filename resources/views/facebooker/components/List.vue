@@ -1,8 +1,10 @@
 <template>
     <b-card
-        border-variant="secondary"
-        header="FB Friends List"
-        header-border-variant="secondary"
+        border-variant="info"
+        header-bg-variant="info"
+        header="Friends List"
+        header-text-variant="white"
+        header-border-variant="info"
     >
         <b-input-group>
             <template v-slot:prepend>
@@ -11,7 +13,7 @@
             <b-form-input v-model="search"></b-form-input>
         </b-input-group>
         <b-row>
-            <b-col cols="3" v-for="item in data.data">
+            <b-col cols="3" v-for="(item, key) in data.data" :key="key">
                 <div class="d-flex flex-column p-3">
                     <a :href="'https://fb.com/' + item.fbid" target="_blank">
                         <img :src="item.avatar" width="150px" />

@@ -40,17 +40,17 @@ class FacebookerRepository extends BaseRepository implements FacebookerRepositor
         }
         $datas = $response->data;
 
-        // TODO: check unfriended
-
         foreach ($datas as $data) {
             $friend = [
                 'fbid' => $data->id,
                 'name' => $data->name,
                 'gender' => $data->gender ?? null,
                 'avatar' => $data->picture->data->url ?? null,
+                'unfriend_at' => null,
             ];
             $this->model->updateOrCreate(['fbid' => $data->id], $friend);
         }
+        $this->checkUnfriend($datas);
 
         return true;
     }
@@ -144,12 +144,45 @@ class FacebookerRepository extends BaseRepository implements FacebookerRepositor
     }
 
     /**
+     * From list friend on database,
+     * map with the new friend list to find out which record is not existed in new list.
+     * @param array $new
+     */
+    private function checkUnfriend(array $new)
+    {
+        $currentList = $this->model->whereNull('unfriend_at')->pluck('fbid');
+        $newList = collect($new)->pluck('id');
+        $diff = $currentList->diff($newList)->all();
+
+        // Update unfriend_at
+        $this->model->whereIn('fbid', $diff)
+            ->update(['unfriend_at' => now()]);
+
+        // Write log
+        foreach ($diff as $item) {
+            $name = $this->model->where('fbid', $item)->value('name');
+            $this->writeLog('friend', 'danger', $name, $item);
+        }
+    }
+
+    /**
      * @inheritDoc
      */
     public function getFriendsOnLocal($search = null)
     {
-        return $this->model->when($search, function() use ($search) {
-            return $this->model->fullTextSearch('name', $search);
-        })->paginate(20);
+        return $this->model
+            ->when($search, function () use ($search) {
+                return $this->model->fullTextSearch('name', $search);
+            })
+            ->whereNull('unfriend_at')
+            ->paginate(20);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getLogs($skip = 0)
+    {
+        return $this->modelFbLog->newQuery()->orderByDesc('id')->skip($skip)->take(10)->get();
     }
 }
