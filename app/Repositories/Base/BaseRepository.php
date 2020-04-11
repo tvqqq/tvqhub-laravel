@@ -21,7 +21,7 @@ abstract class BaseRepository implements BaseRepositoryInterface
      */
     public function __construct(Model $model)
     {
-        $this->model = $model;
+        $this->model = $model->newModelQuery();
     }
 
     /**
