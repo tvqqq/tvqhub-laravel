@@ -1,11 +1,16 @@
 <template>
     <b-card
-        border-variant="info"
-        header-bg-variant="info"
-        header="Friends List"
+        border-variant="success"
+        header-bg-variant="success"
         header-text-variant="white"
-        header-border-variant="info"
+        header-border-variant="success"
     >
+        <template v-slot:header>
+            <div class="d-flex justify-content-between align-items-center">
+                <span>Friends List</span>
+                <b-button @click="updateList" size="sm" variant="light" :disabled="isUpdate" v-html="textUpdate"></b-button>
+            </div>
+        </template>
         <b-input-group>
             <template v-slot:prepend>
                 <b-input-group-text><i class="fas fa-search"></i>&nbsp;Search friend</b-input-group-text>
@@ -16,7 +21,7 @@
             <b-col cols="3" v-for="(item, key) in data.data" :key="key">
                 <div class="d-flex flex-column p-3">
                     <a :href="'https://fb.com/' + item.fbid" target="_blank">
-                        <img :src="item.avatar" width="150px" />
+                        <img :src="item.avatar" width="150px"/>
                     </a>
                     <span class="mt-1">
                         {{ item.name }}&nbsp;
@@ -31,7 +36,8 @@
             </b-col>
         </b-row>
 
-        <pagination :data="data" @pagination-change-page="getResults" :show-disabled="true" :limit="1" align="center"></pagination>
+        <pagination :data="data" @pagination-change-page="getResults" :show-disabled="true" :limit="1"
+                    align="center"></pagination>
     </b-card>
 </template>
 
@@ -42,7 +48,9 @@
             return {
                 data: {},
                 originData: {},
-                search: ''
+                search: '',
+                textUpdate: 'Update',
+                isUpdate: false
             }
         },
         created() {
@@ -58,6 +66,18 @@
                     if (_.isEmpty(this.search)) {
                         this.originData = this.data;
                     }
+                }).catch(error => {
+                    console.log(error);
+                });
+            },
+            updateList() {
+                this.isUpdate = true;
+                this.textUpdate = '<i class="fas fa-spinner fa-spin"></i> Loading';
+                axios({
+                    method: 'GET',
+                    url: '/facebooker/friends/update'
+                }).then(response => {
+                    this.textUpdate = '<i class="fas fa-check"></i> Completed';
                 }).catch(error => {
                     console.log(error);
                 });
