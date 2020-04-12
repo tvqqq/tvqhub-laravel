@@ -19,6 +19,6 @@ class ChineseNameController extends Controller
             'GET',
             self::PARTNER_URL . $name
         );
-        return $this->responseSuccess($response->data);
+        return $this->response(['success' => true, 'data' => $response->data]);
     }
 }

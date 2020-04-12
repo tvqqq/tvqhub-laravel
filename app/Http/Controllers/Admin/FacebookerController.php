@@ -42,8 +42,8 @@ class FacebookerController extends Controller
      */
     public function friends()
     {
-        $friends = $this->repository->getFriendsOnLocal(request('search'), request('auto'));
-        return $this->responseSuccess($friends);
+        $result = $this->repository->getFriendsOnLocal(request('search'), request('auto'));
+        return $this->response(['success' => true, 'data' => $result]);
     }
 
     /**
@@ -62,7 +62,7 @@ class FacebookerController extends Controller
     public function logs()
     {
         $result = $this->repository->getLogs(request('skip'));
-        return $this->responseSuccess($result, null);
+        return $this->response(['success' => true, 'data' => $result]);
     }
 
     /**
@@ -77,7 +77,7 @@ class FacebookerController extends Controller
             'text' => '---',
             'disabled' => false
         ]);
-        return $this->responseSuccess($result, null);
+        return $this->response(['success' => true, 'data' => $result]);
     }
 
     /**
@@ -86,9 +86,7 @@ class FacebookerController extends Controller
      */
     public function updateTimer()
     {
-        // TODO: Validation
-
         $result = $this->repository->updateTimer(request('id'), request('timer'));
-        return $this->responseSuccess($result, null);
+        return $this->response(['success' => true, 'data' => $result]);
     }
 }

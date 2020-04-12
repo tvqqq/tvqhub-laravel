@@ -30,6 +30,6 @@ class ChinesePlaylistController extends Controller
             'last_updated' => $this->repository->getTimeLastUpdated()
         ];
 
-        return $this->responseSuccess($playlist, $meta);
+        return $this->response(['success' => true, 'data' => $playlist], $meta);
     }
 }

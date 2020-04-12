@@ -88,7 +88,8 @@
                     method: 'GET',
                     url: '/facebooker/friends/update'
                 }).then(response => {
-                    this.textUpdate = '<i class="fas fa-check"></i> Completed';
+                    let faIcon = response.data.success ? 'check' : 'times';
+                    this.textUpdate = '<i class="fas fa-' + faIcon + '"></i> ' + response.data.message;
                 });
             },
             getTimerAvaiable() {

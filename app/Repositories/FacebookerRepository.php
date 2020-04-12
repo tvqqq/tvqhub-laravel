@@ -218,6 +218,6 @@ class FacebookerRepository extends BaseRepository implements FacebookerRepositor
         $this->model->where('timer', $timer)->update(['timer' => null]);
 
         // Update to new friend
-        $this->model->find($id)->update(['timer' => $timer]);
+        return $this->model->find($id)->update(['timer' => $timer]);
     }
 }

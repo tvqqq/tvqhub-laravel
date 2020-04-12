@@ -34,7 +34,7 @@ class AmaQuestionController extends Controller
 
         $meta['count_no_reply'] = $this->repository->countNoReply();
 
-        return $this->responseSuccess($data, $meta);
+        return $this->response(['success' => true, 'data' => $data], $meta);
     }
 
     /**
@@ -51,6 +51,6 @@ class AmaQuestionController extends Controller
         // Send mail notification
         Mail::to(config('tvqhub.mail_admin'))->queue(new AMAQuestionSent($data));
 
-        return $this->responseSuccess($data);
+        return $this->response(['success' => true, 'data' => $data]);
     }
 }

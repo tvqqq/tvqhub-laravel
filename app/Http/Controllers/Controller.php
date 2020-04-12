@@ -25,7 +25,7 @@ class Controller extends BaseController
         }
     }
 
-    protected function responseSuccess($data, $meta = null)
+    private function responseSuccess($data, $meta = null)
     {
         $this->result = [
             'success' => true,
@@ -36,7 +36,7 @@ class Controller extends BaseController
         return response($this->result, 200);
     }
 
-    protected function responseFail($message, $code = 400)
+    private function responseFail($message, $code = 200)
     {
         $this->result['message'] = $message;
         return response($this->result, $code);

@@ -41,7 +41,7 @@ class UrlController extends Controller
 
         $originUrl = $validated['origin_url'];
         if ($existed = $this->repository->checkOriginLinkExisted($originUrl)) {
-            return $this->responseSuccess($existed);
+            return $this->response(['success' => true, 'data' => $existed]);
         }
 
         $shortLink = $this->repository->createShortLink($originUrl);
@@ -50,7 +50,7 @@ class UrlController extends Controller
             'slug' => $shortLink
         ]);
 
-        return $this->responseSuccess($result);
+        return $this->response(['success' => true, 'data' => $result]);
     }
 
     public function counter(UrlCounterRequest $request)
@@ -70,7 +70,7 @@ class UrlController extends Controller
             'clicks' => count($data['url_details'])
         ];
 
-        return $this->responseSuccess($result);
+        return $this->response(['success' => true, 'data' => $result]);
     }
 
     public function redirect(string $slug)
