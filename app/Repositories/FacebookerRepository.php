@@ -8,6 +8,7 @@ use App\Models\LarOption;
 use App\Repositories\Base\BaseRepository;
 use App\Repositories\FacebookerRepositoryInterface;
 use Helper;
+use Opt;
 
 class FacebookerRepository extends BaseRepository implements FacebookerRepositoryInterface
 {
@@ -92,7 +93,7 @@ class FacebookerRepository extends BaseRepository implements FacebookerRepositor
      */
     private function getAccessToken()
     {
-        return LarOption::where('key', 'fb_access_token')->value('value');
+        return Opt::get('fb_access_token');
     }
 
     /**

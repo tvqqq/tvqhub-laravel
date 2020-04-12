@@ -229,6 +229,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Helper' => App\Facades\HelperFacade::class,
+        'Opt' => App\Facades\LarOptionFacade::class,
 
     ],
 

@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\LarOption;
+use App\Models\LarOption;
 use App\Repositories\Base\BaseRepository;
 use App\Repositories\LarOptionRepositoryInterface;
 
@@ -16,5 +16,21 @@ class LarOptionRepository extends BaseRepository implements LarOptionRepositoryI
     public function __construct(LarOption $model)
     {
         parent::__construct($model);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function get(string $name)
+    {
+        return $this->model->where('key', $name)->value('value');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function set(string $name, $value)
+    {
+        // TODO: Implement set() method.
     }
 }
