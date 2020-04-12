@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Helpers\HGuzzle;
 use App\Models\FbFriend;
 use App\Models\FbLog;
 use App\Models\LarOption;

@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Helpers\HGuzzle;
 use App\Repositories\Base\BaseRepository;
 use App\Models\Url;
 use App\Models\UrlDetail;

@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Helpers\HGuzzle;
 use App\Models\SlackWebhook;
 use App\Repositories\Base\BaseRepository;
 use App\Repositories\SlackWebhookRepositoryInterface;
