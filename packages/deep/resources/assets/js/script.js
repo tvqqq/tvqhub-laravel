@@ -71,4 +71,21 @@ $(function () {
         $('.media-input').css('display', 'none');
         $('.media-' + this.value).css('display', 'block');
     });
+
+    // Get latest post from Tumblr
+    $('#latest').on('click', function (e) {
+        $(this).attr('disabled', true);
+        $('.loader').css('display', 'inline-block');
+        e.preventDefault();
+        $.ajax({
+            type: 'GET',
+            url: '/latest',
+            success: function (data) {
+                toastr.success(data.message);
+            },
+        }).done(() => {
+            $(this).attr('disabled', false);
+            $('.loader').css('display', 'none');
+        });
+    });
 });

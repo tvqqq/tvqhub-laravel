@@ -9,4 +9,5 @@ Route::group([
     Route::get('/', "{$controller}@index")->name('index');
     Route::get('video', "{$controller}@indexVideo")->name('indexVideo');
     Route::resource('posts', "{$controller}")->except('index');
+    Route::get('latest', "{$controller}@latest")->name('latest');
 });

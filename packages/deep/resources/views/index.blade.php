@@ -73,6 +73,7 @@
                 </div>
                 <textarea name="content" rows="20"></textarea>
                 <button type="submit">Add new post 🤗</button>
+                <button type="button" id="latest">Get latest post from Tumblr <div class="loader"></div></button>
             </form>
         @endif
     @endauth

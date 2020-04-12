@@ -2,24 +2,24 @@
 
 namespace App\Console\Commands;
 
-use App\Repositories\FacebookerRepositoryInterface;
+use Deep\Controllers\DeepController;
 use Illuminate\Console\Command;
 
-class FbAutoLike extends Command
+class DeepTumblr extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'tvqhub:fb-autolike';
+    protected $signature = 'tvqhub:deep-tumblr';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Auto like crushes\'s posts';
+    protected $description = 'Cron Tumblr newest post';
 
     /**
      * Create a new command instance.
@@ -38,6 +38,6 @@ class FbAutoLike extends Command
      */
     public function handle()
     {
-        app(FacebookerRepositoryInterface::class)->autoLike();
+        app(DeepController::class)->cron();
     }
 }

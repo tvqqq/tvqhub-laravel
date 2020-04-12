@@ -10,4 +10,6 @@ return [
 
     'google_api_key' => env('GOOGLE_API_KEY'),
 
+    'tumblr_api_key' => env('TUMBLR_API_KEY'),
+
 ];

@@ -10,7 +10,9 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Http;
 
 class DeepController extends Controller
 {
@@ -168,13 +170,64 @@ class DeepController extends Controller
     }
 
     /**
-     * Replace character '==' with tag '<br/>' to make a line break in content
+     * Replace character '==', '\n' with tag '<br/>' to make a line break in content
      *
      * @param string $content
      * @return string
      */
     private function replaceWithBrTag($content)
     {
-        return str_replace('==', '<br/>', $content);
+        return str_replace(['==', '\\n'], '<br/>', $content);
+    }
+
+    /**
+     * Call to command cron Tumblr
+     */
+    public function latest()
+    {
+        Artisan::call('tvqhub:deep-tumblr');
+        return response()->json(['success' => true, 'message' => 'Action completed!']);
+    }
+
+    /**
+     * Get latest post on Tumblr
+     * @return bool
+     */
+    public function cron()
+    {
+        $response = Http::get('https://api.tumblr.com/v2/blog/muathangmuoihai/posts/photo', [
+            'api_key' => config('tvqhub.tumblr_api_key'),
+            'limit' => 1,
+            'npf' => true
+        ]);
+        $data = $response->json()['response']['posts'][0];
+
+        // Check tumblr_post_id existed
+        $existed = DeepPost::where('tumblr_post_id', $data['id'])->first();
+        if ($existed) {
+            return false;
+        }
+
+        $content = $data['trail'][0]['content'];
+        $text = '';
+        $imgUrl = '';
+        foreach ($content as $item) {
+            if ($item['type'] === 'image') {
+                $imgUrl = $item['media'][0]['url'];
+                $imgUrl = app(HCloudinary::class)->upload($imgUrl, self::CLOUDINARY_FOLDER)['secure_url'];
+            }
+
+            if ($item['type'] === 'text') {
+                $text .= $item['text'] . '<br/>';
+            }
+        }
+
+        DeepPost::create([
+            'type' => 'image',
+            'content' => $text,
+            'media' => $imgUrl,
+            'tumblr_post_id' => $data['id'],
+            'created_by' => 0
+        ]);
     }
 }

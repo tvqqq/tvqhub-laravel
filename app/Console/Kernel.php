@@ -31,6 +31,9 @@ class Kernel extends ConsoleKernel
 
         $schedule->command(FbAutoLike::class)
             ->hourly()->between('7:00', '22:00')->runInBackground();
+
+        $schedule->command(FbAutoLike::class)
+            ->everyFifteenMinutes()->between('12:00', '24:00')->runInBackground();
     }
 
     /**
