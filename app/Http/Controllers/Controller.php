@@ -16,6 +16,15 @@ class Controller extends BaseController
         'message' => ''
     ];
 
+    protected function response($response, $meta = null)
+    {
+        if (!empty($response['success'])) {
+            return $this->responseSuccess($response['data'], $meta);
+        } else {
+            return $this->responseFail($response['message']);
+        }
+    }
+
     protected function responseSuccess($data, $meta = null)
     {
         $this->result = [
@@ -27,10 +36,9 @@ class Controller extends BaseController
         return response($this->result, 200);
     }
 
-    protected function responseFail($error, $code = 400)
+    protected function responseFail($message, $code = 400)
     {
-        $this->result['message'] = __('messages.fail');
-        $this->result['error'] = $error;
+        $this->result['message'] = $message;
         return response($this->result, $code);
     }
 

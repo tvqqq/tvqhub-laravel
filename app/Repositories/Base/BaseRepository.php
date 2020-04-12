@@ -27,7 +27,18 @@ abstract class BaseRepository implements BaseRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function returnFalse($message)
+    public function true($data)
+    {
+        return [
+            'success' => true,
+            'data' => $data
+        ];
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function false($message)
     {
         return [
             'success' => false,

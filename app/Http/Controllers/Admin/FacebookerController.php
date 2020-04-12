@@ -52,7 +52,7 @@ class FacebookerController extends Controller
     public function updateFriends()
     {
         $result = $this->repository->getFriends();
-        return $this->responseSuccess($result, null);
+        return $this->response($result);
     }
 
     /**

@@ -2,7 +2,7 @@
 
 return [
 
-    'success' => 'It works!',
+    'success' => 'Action completed!',
     'fail' => 'Something went wrong!',
 
 ];

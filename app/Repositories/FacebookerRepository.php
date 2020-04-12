@@ -36,7 +36,7 @@ class FacebookerRepository extends BaseRepository implements FacebookerRepositor
         // Call API
         $response = $this->callApi('me', 'friends', '&fields=name,picture.width(2048){url},gender&pretty=0&limit=5000');
         if (!$response) {
-            return $this->returnFalse('Call API failed.');
+            return $this->false('Call FB API failed.');
         }
         $datas = $response->data;
 
@@ -50,9 +50,9 @@ class FacebookerRepository extends BaseRepository implements FacebookerRepositor
             ];
             $this->model->updateOrCreate(['fbid' => $data->id], $friend);
         }
-        $this->checkUnfriend($datas);
+        $unf = $this->checkUnfriend($datas);
 
-        return true;
+        return $this->true($unf);
     }
 
     /**

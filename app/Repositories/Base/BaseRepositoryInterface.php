@@ -6,6 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 interface BaseRepositoryInterface
 {
+
+    /**
+     * Return true with data.
+     *
+     * @param $data
+     * @return array
+     */
+    public function true($data);
+
+    /**
+     * Return false with message.
+     *
+     * @param $message
+     * @return array
+     */
+    public function false($message);
+
     /**
      * Create a new record.
      *
@@ -15,20 +32,11 @@ interface BaseRepositoryInterface
     public function create(array $data);
 
     /**
-     * Return false with message.
-     *
-     * @param $message
-     * @return array
-     */
-    public function returnFalse($message);
-
-    /**
      * Get all records order by latest.
      *
      * @return mixed
      */
     public function getLatest();
-
 
     /**
      * Find the item by id
