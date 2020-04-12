@@ -16,9 +16,12 @@
                 <b-input-group-text><i class="fas fa-search"></i>&nbsp;Search friend</b-input-group-text>
             </template>
             <b-form-input v-model="search"></b-form-input>
+            <b-form-checkbox v-model="auto" button class="border-left ml-3 pl-3" button-variant="danger">
+                <i class="fas fa-heart"></i> Show Auto
+            </b-form-checkbox>
         </b-input-group>
         <b-row>
-            <b-col cols="3" v-for="(item, key) in data.data" :key="key">
+            <b-col cols="3" v-for="item in data.data" :key="item.id">
                 <div class="d-flex flex-column p-3">
                     <a :href="'https://fb.com/' + item.fbid" target="_blank">
                         <img :src="item.avatar" width="150px"/>
@@ -31,6 +34,12 @@
                         <span v-else>
                             <i class="fas fa-venus text-warning"></i>
                         </span>
+                        <b-input-group size="sm" class="w-50">
+                            <template v-slot:prepend>
+                                <b-input-group-text class="timer-icon"><i class="fas fa-clock"></i></b-input-group-text>
+                            </template>
+                            <b-form-select v-model="item.timer" :options="timerAvailable" @change="updateAuto(item.id, item.timer)"></b-form-select>
+                          </b-input-group>
                     </span>
                 </div>
             </b-col>
@@ -50,20 +59,24 @@
                 originData: {},
                 search: '',
                 textUpdate: 'Update',
-                isUpdate: false
+                isUpdate: false,
+                selected: null,
+                timerAvailable: [],
+                auto: false
             }
         },
         created() {
             this.getResults();
+            this.getTimerAvaiable();
         },
         methods: {
             getResults(page = 1) {
                 axios({
                     method: 'GET',
-                    url: '/facebooker/friends?page=' + page + '&search=' + this.search
+                    url: '/facebooker/friends?page=' + page + '&search=' + this.search + '&auto=' + this.auto
                 }).then(response => {
                     this.data = response.data.data;
-                    if (_.isEmpty(this.search)) {
+                    if (_.isEmpty(this.search) && !this.auto) {
                         this.originData = this.data;
                     }
                 }).catch(error => {
@@ -81,6 +94,31 @@
                 }).catch(error => {
                     console.log(error);
                 });
+            },
+            getTimerAvaiable() {
+                axios({
+                    method: 'GET',
+                    url: '/facebooker/timer'
+                }).then(response => {
+                    this.timerAvailable = response.data.data;
+                    this.timerAvailable = this.timerAvailable.flat(1);
+                }).catch(error => {
+                    console.log(error);
+                });
+            },
+            updateAuto(id, selected) {
+                axios({
+                    method: 'PATCH',
+                    url: '/facebooker/friends/timer',
+                    data: {
+                        'id': id,
+                        'timer': selected
+                    }
+                }).then(response => {
+                    this.getTimerAvaiable();
+                }).catch(error => {
+                    console.log(error);
+                });
             }
         },
         watch: {
@@ -90,7 +128,21 @@
                 } else {
                     this.data = this.originData;
                 }
+            },
+            auto() {
+                console.log(this.auto);
+                if (this.auto) {
+                    this.getResults();
+                } else {
+                    this.data = this.originData;
+                }
             }
         }
     }
 </script>
+
+<style scoped>
+    .timer-icon {
+        padding: 2px !important;
+    }
+</style>

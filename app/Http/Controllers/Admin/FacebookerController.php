@@ -42,7 +42,7 @@ class FacebookerController extends Controller
      */
     public function friends()
     {
-        $friends = $this->repository->getFriendsOnLocal(request('search'));
+        $friends = $this->repository->getFriendsOnLocal(request('search'), request('auto'));
         return $this->responseSuccess($friends);
     }
 
@@ -62,6 +62,33 @@ class FacebookerController extends Controller
     public function logs()
     {
         $result = $this->repository->getLogs(request('skip'));
+        return $this->responseSuccess($result, null);
+    }
+
+    /**
+     * Get timer auto like available for select
+     * @return ResponseFactory|Response
+     */
+    public function timer()
+    {
+        $result = $this->repository->getTimer();
+        array_unshift($result, [
+            'value' => null,
+            'text' => '---',
+            'disabled' => false
+        ]);
+        return $this->responseSuccess($result, null);
+    }
+
+    /**
+     * Update timer auto like of friend
+     * @return ResponseFactory|Response
+     */
+    public function updateTimer()
+    {
+        // TODO: Validation
+
+        $result = $this->repository->updateTimer(request('id'), request('timer'));
         return $this->responseSuccess($result, null);
     }
 }

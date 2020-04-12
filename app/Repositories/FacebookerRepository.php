@@ -168,13 +168,17 @@ class FacebookerRepository extends BaseRepository implements FacebookerRepositor
     /**
      * @inheritDoc
      */
-    public function getFriendsOnLocal($search = null)
+    public function getFriendsOnLocal($search = null, $showAuto = false)
     {
         return $this->model
             ->when($search, function () use ($search) {
                 return $this->model->fullTextSearch('name', $search);
             })
+            ->when($showAuto === 'true', function() {
+                return $this->model->whereNotNull('timer')->orderBy('timer');
+            })
             ->whereNull('unfriend_at')
+            ->orderByDesc('id')
             ->paginate(20);
     }
 
@@ -184,5 +188,36 @@ class FacebookerRepository extends BaseRepository implements FacebookerRepositor
     public function getLogs($skip = 0)
     {
         return $this->modelFbLog->newQuery()->orderByDesc('id')->skip($skip)->take(10)->get();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getTimer()
+    {
+        $timer = $this->model->whereNotNull('timer')->pluck('timer')->all();
+        $range = range(7, 22);
+        $diff = array_diff($range, $timer);
+        $result = [];
+        foreach ($range as $item) {
+            $result[] = [
+                'value' => $item,
+                'text' => sprintf('%02d', $item),
+                'disabled' => !in_array($item, $diff)
+            ];
+        }
+        return $result;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function updateTimer($id, $timer)
+    {
+        // Remove current timer
+        $this->model->where('timer', $timer)->update(['timer' => null]);
+
+        // Update to new friend
+        $this->model->find($id)->update(['timer' => $timer]);
     }
 }
