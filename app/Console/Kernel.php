@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\DeepTumblr;
 use App\Console\Commands\FbAutoLike;
 use App\Console\Commands\SlackWebhook;
 use Illuminate\Console\Scheduling\Schedule;
@@ -32,7 +33,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(FbAutoLike::class)
             ->hourly()->between('7:00', '22:00')->runInBackground();
 
-        $schedule->command(FbAutoLike::class)
+        $schedule->command(DeepTumblr::class)
             ->everyFifteenMinutes()->between('12:00', '24:00')->runInBackground();
     }
 
