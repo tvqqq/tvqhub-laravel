@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Helpers\HGuzzle;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ChineseNameRequest;
+use Helper;
 use Illuminate\Http\Request;
 
 class ChineseNameController extends Controller
@@ -15,7 +16,7 @@ class ChineseNameController extends Controller
     {
         $validated = $request->validated();
         $name = str_replace(' ', '+', $validated['name']);
-        $response = app(HGuzzle::class)->send(
+        $response = Helper::guzzle(
             'GET',
             self::PARTNER_URL . $name
         );

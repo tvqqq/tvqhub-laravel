@@ -7,6 +7,7 @@ use App\Models\SlackWebhook;
 use App\Repositories\Base\BaseRepository;
 use App\Repositories\SlackWebhookRepositoryInterface;
 use Google\Cloud\Translate\V2\TranslateClient;
+use Helper;
 
 class SlackWebhookRepository extends BaseRepository implements SlackWebhookRepositoryInterface
 {
@@ -34,7 +35,7 @@ class SlackWebhookRepository extends BaseRepository implements SlackWebhookRepos
      */
     private function sendSlackMsg($data, $channel = 'general')
     {
-        app(HGuzzle::class)->send(
+        Helper::guzzle(
             'POST',
             config('tvqhub.slack_webhook') . self::CHANNEL[$channel],
             ['body' => json_encode($data)]

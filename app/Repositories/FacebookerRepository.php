@@ -8,6 +8,7 @@ use App\Models\FbLog;
 use App\Models\LarOption;
 use App\Repositories\Base\BaseRepository;
 use App\Repositories\FacebookerRepositoryInterface;
+use Helper;
 
 class FacebookerRepository extends BaseRepository implements FacebookerRepositoryInterface
 {
@@ -108,7 +109,7 @@ class FacebookerRepository extends BaseRepository implements FacebookerRepositor
     {
         $fbAccessToken = $this->getAccessToken();
         $url = self::GRAPH_VERSION . $node . '/' . $edges . '?access_token=' . $fbAccessToken . $fields;
-        return app(HGuzzle::class)->send('GET', $url);
+        return Helper::guzzle('GET', $url);
     }
 
     /**

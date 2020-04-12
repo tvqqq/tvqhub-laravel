@@ -6,6 +6,7 @@ use App\Helpers\HGuzzle;
 use App\Repositories\Base\BaseRepository;
 use App\Models\Url;
 use App\Models\UrlDetail;
+use Helper;
 
 class UrlRepository extends BaseRepository implements UrlRepositoryInterface
 {
@@ -55,7 +56,7 @@ class UrlRepository extends BaseRepository implements UrlRepositoryInterface
             'ip' => $ip,
             'user_agent' => $userAgent,
         ];
-        $ipGeo = app(HGuzzle::class)->send('GET', 'https://api.ipgeolocation.io/ipgeo?apiKey=' . $ipGeoKey . '&ip=' . $ip);
+        $ipGeo = Helper::guzzle('GET', 'https://api.ipgeolocation.io/ipgeo?apiKey=' . $ipGeoKey . '&ip=' . $ip);
         if ($ipGeo) {
             $params['ip_tracking'] = [
                 'country_code2' => $ipGeo->country_code2,
