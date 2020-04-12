@@ -56,7 +56,8 @@
                     url: '/',
                     data: {
                         origin_url: this.originUrl
-                    }
+                    },
+                    errorHandle: false
                 }).then(response => {
                     this.isLoading = false;
                     this.success = response.data.success;

@@ -79,8 +79,6 @@
                     if (_.isEmpty(this.search) && !this.auto) {
                         this.originData = this.data;
                     }
-                }).catch(error => {
-                    console.log(error);
                 });
             },
             updateList() {
@@ -91,8 +89,6 @@
                     url: '/facebooker/friends/update'
                 }).then(response => {
                     this.textUpdate = '<i class="fas fa-check"></i> Completed';
-                }).catch(error => {
-                    console.log(error);
                 });
             },
             getTimerAvaiable() {
@@ -102,8 +98,6 @@
                 }).then(response => {
                     this.timerAvailable = response.data.data;
                     this.timerAvailable = this.timerAvailable.flat(1);
-                }).catch(error => {
-                    console.log(error);
                 });
             },
             updateAuto(id, selected) {
@@ -116,26 +110,22 @@
                     }
                 }).then(response => {
                     this.getTimerAvaiable();
-                }).catch(error => {
-                    console.log(error);
                 });
+            },
+            fetchData(variable) {
+                if (variable) {
+                    this.getResults();
+                } else {
+                    this.data = this.originData;
+                }
             }
         },
         watch: {
             search() {
-                if (this.search) {
-                    this.getResults();
-                } else {
-                    this.data = this.originData;
-                }
+                this.fetchData(this.search());
             },
             auto() {
-                console.log(this.auto);
-                if (this.auto) {
-                    this.getResults();
-                } else {
-                    this.data = this.originData;
-                }
+                this.fetchData(this.auto());
             }
         }
     }

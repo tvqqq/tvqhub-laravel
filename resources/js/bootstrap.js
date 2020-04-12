@@ -25,6 +25,26 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 window.axios.defaults.withCredentials = true;
 
 /**
+ * API error handling in vue with axios
+ * @see https://www.qcode.in/api-error-handling-in-vue-with-axios/
+ */
+window.axios.interceptors.response.use(
+    function (response) {
+        return response;
+    },
+    function (error) {
+        // check for errorHandle config
+        if( error.config.hasOwnProperty('errorHandle') && error.config.errorHandle === false ) {
+            return Promise.reject(error);
+        }
+
+        // handle error
+        if (error.response) {
+            console.log(error.response.data);
+        }
+    });
+
+/**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
  * allows your team to easily build robust real-time web applications.

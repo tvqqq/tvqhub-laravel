@@ -58,7 +58,8 @@
                     url: '/counter',
                     data: {
                         slug: this.slug
-                    }
+                    },
+                    errorHandle: false
                 }).then(response => {
                     this.isLoading = false;
                     this.isNotFound = false;

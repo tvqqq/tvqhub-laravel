@@ -49,8 +49,6 @@
                     this.data.push(resultData);
                     this.data = this.data.flat(1);
                     this.number += 10;
-                }).catch(error => {
-                    console.log(error);
                 });
             }
         }
