@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-class HCommon
+class Helper
 {
     /**
      * Random a hex color
