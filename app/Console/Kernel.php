@@ -34,7 +34,7 @@ class Kernel extends ConsoleKernel
             ->hourly()->between('7:00', '22:00')->runInBackground();
 
         $schedule->command(DeepTumblr::class)
-            ->everyFifteenMinutes()->between('12:00', '24:00')->runInBackground();
+            ->everyMinute()->runInBackground();
     }
 
     /**
