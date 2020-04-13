@@ -56,8 +56,9 @@ Route::group(['middleware' => ['auth', 'prevent-airlock-user'], 'namespace' => '
         Route::get('timer', 'FacebookerController@timer')->name('api.timer');
         Route::group(['prefix' => 'friends', 'as' => 'api.friends.'], function() {
             Route::get('/', 'FacebookerController@friends')->name('list');
-            Route::get('update', 'FacebookerController@updateFriends')->name('update'); //todo: patch
+            Route::patch('update', 'FacebookerController@updateFriends')->name('update');
             Route::patch('timer', 'FacebookerController@updateTimer')->name('timer');
         });
     });
+
 });

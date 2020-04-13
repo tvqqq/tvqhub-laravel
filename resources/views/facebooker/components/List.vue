@@ -85,7 +85,7 @@
                 this.isUpdate = true;
                 this.textUpdate = '<i class="fas fa-spinner fa-spin"></i> Loading';
                 axios({
-                    method: 'GET',
+                    method: 'PATCH',
                     url: '/facebooker/friends/update'
                 }).then(response => {
                     let faIcon = response.data.success ? 'check' : 'times';
