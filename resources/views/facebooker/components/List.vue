@@ -123,10 +123,10 @@
         },
         watch: {
             search() {
-                this.fetchData(this.search());
+                this.fetchData(this.search);
             },
             auto() {
-                this.fetchData(this.auto());
+                this.fetchData(this.auto);
             }
         }
     }
