@@ -203,7 +203,7 @@ class DeepController extends Controller
         if (!$response) {
             return false;
         }
-        $data = $response->json()['response']['posts'][0];
+        $data = $response['posts'][0];
 
         // Check tumblr_post_id existed
         $existed = DeepPost::where('tumblr_post_id', $data['id'])->first();
