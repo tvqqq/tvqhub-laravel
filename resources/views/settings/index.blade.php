@@ -16,12 +16,21 @@
                     <x-slot name="description">Document: <a href="https://www.tumblr.com/docs/en/api/v2" target="_blank">https://www.tumblr.com/docs/en/api/v2</a></x-slot>
                     <x-text :value="$data" key="tumblr_api_key"></x-text>
                 </x-setting>
+
+                <x-setting>
+                    <x-slot name="title">Google API Key</x-slot>
+                    <x-text :value="$data" key="google_api_key"></x-text>
+                </x-setting>
+
+                <x-setting>
+                    <x-slot name="title">Slack Webhook (#general)</x-slot>
+                    <x-text :value="$data" key="slack_general_webhook"></x-text>
+                </x-setting>
             </div>
 
             <div class="card-footer">
                 <button type="submit" class="btn btn-outline-danger">Apply</button>
             </div>
         </form>
-
     </div>
 @endsection

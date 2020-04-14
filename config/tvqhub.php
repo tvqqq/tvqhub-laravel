@@ -6,8 +6,4 @@ return [
 
     'mail_admin' => env('TVQHUB_MAIL_ADMIN'),
 
-    'slack_webhook' => env('SLACK_WEBHOOK'),
-
-    'google_api_key' => env('GOOGLE_API_KEY'),
-
 ];

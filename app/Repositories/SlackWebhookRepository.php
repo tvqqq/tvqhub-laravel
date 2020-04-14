@@ -7,13 +7,10 @@ use App\Repositories\Base\BaseRepository;
 use App\Repositories\SlackWebhookRepositoryInterface;
 use Google\Cloud\Translate\V2\TranslateClient;
 use Helper;
+use Opt;
 
 class SlackWebhookRepository extends BaseRepository implements SlackWebhookRepositoryInterface
 {
-    const CHANNEL = [
-        'general' => 'BTRQDV4BF/o5DY4k53e98xXrSh9W9zTXZM',
-        'tvqhub' => 'BTWKCB5NK/4GucBWWZnmqxk39qXzALCDSM'
-    ];
 
     /**
      * SlackWebhookRepository constructor.
@@ -29,14 +26,13 @@ class SlackWebhookRepository extends BaseRepository implements SlackWebhookRepos
      * Send slack message into webhook.
      *
      * @param $data
-     * @param string $channel
      * @return mixed
      */
-    private function sendSlackMsg($data, $channel = 'general')
+    private function sendSlackMsg($data)
     {
         Helper::guzzle(
             'POST',
-            config('tvqhub.slack_webhook') . self::CHANNEL[$channel],
+            Opt::get('slack_general_webhook'),
             ['body' => json_encode($data)]
         );
     }
@@ -53,7 +49,7 @@ class SlackWebhookRepository extends BaseRepository implements SlackWebhookRepos
 
         // Translate to Vietnamese
         $translateClient = new TranslateClient([
-            'key' => config('tvqhub.google_api_key')
+            'key' => Opt::get('google_api_key')
         ]);
         $translate = $translateClient->translate($quotes['quote'], [
             'source' => 'en',
