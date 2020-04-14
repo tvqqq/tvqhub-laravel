@@ -17,7 +17,7 @@ class FacebookerController extends Controller
     protected $repository;
 
     /**
-     * ChinesePlaylistController constructor.
+     * FacebookerController constructor.
      * @param FacebookerRepositoryInterface $repository
      */
     public function __construct(FacebookerRepositoryInterface $repository)
