@@ -29,8 +29,8 @@ class LarOptionRepository extends BaseRepository implements LarOptionRepositoryI
     /**
      * @inheritDoc
      */
-    public function set(string $name, $value)
+    public function set($key, $value)
     {
-        // TODO: Implement set() method.
+        return $this->model->updateOrCreate(['key' => $key], ['value' => $value]);
     }
 }

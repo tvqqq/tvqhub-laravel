@@ -196,10 +196,13 @@ class DeepController extends Controller
     public function cron()
     {
         $response = Http::get('https://api.tumblr.com/v2/blog/muathangmuoihai/posts/photo', [
-            'api_key' => config('tvqhub.tumblr_api_key'),
+            'api_key' => \Opt::get('tumblr_api_key'),
             'limit' => 1,
             'npf' => true
-        ]);
+        ])->json()['response'];
+        if (!$response) {
+            return false;
+        }
         $data = $response->json()['response']['posts'][0];
 
         // Check tumblr_post_id existed

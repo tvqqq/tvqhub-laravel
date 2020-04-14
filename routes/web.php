@@ -60,5 +60,8 @@ Route::group(['middleware' => ['auth', 'prevent-airlock-user'], 'namespace' => '
             Route::patch('timer', 'FacebookerController@updateTimer')->name('timer');
         });
     });
-
+    Route::group(['prefix' => 'settings', 'as' => 'settings.'], function() {
+        Route::get('/', 'SettingController@index');
+        Route::post('/', 'SettingController@update')->name('update');
+    });
 });

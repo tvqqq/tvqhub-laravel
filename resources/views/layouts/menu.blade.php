@@ -1,6 +1,7 @@
 <?php
     $menu = [
         'home' => 'Home',
+        'settings.' => '§ettings',
         'ama.' => 'AMA',
         'chinese-playlist.' => 'Chinese Playlist',
         'url.' => 'Short Link (URL)',

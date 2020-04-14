@@ -15,9 +15,9 @@ interface LarOptionRepositoryInterface extends BaseRepositoryInterface
 
     /**
      * Set value to option.
-     * @param string $name
+     * @param $key
      * @param $value
      * @return mixed
      */
-    public function set(string $name, $value);
+    public function set($key, $value);
 }
