@@ -48,15 +48,15 @@ class LoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        // User not enable 2FA
-        if (!($secret = $user->google2fa_secret)) {
+        // User has not enabled 2FA or in local development
+        if (!($secret = $user->google2fa_secret) || config('app.env') === 'local') {
             return false; // authenticated
         }
 
         // Verify 2FA
         $otp = request('otp') ?? '';
         if (!$otp) {
-            return $this->otpError($request, 'This account has enabled 2FA');
+            return $this->otpError($request, 'This account has enabled 2FA.');
         }
         $google2fa = new Google2FA();
         $valid = $google2fa->verifyKey($secret, $otp);
