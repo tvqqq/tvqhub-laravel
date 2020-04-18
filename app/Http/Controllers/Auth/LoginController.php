@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use PragmaRX\Google2FA\Google2FA;
 
 class LoginController extends Controller
 {
@@ -35,5 +37,44 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    /**
+     * The user has been authenticated.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param mixed $user
+     * @return mixed
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        // User has not enabled 2FA or in local development
+        if (!($secret = $user->google2fa_secret) || config('app.env') === 'local') {
+            return false; // authenticated
+        }
+
+        // Verify 2FA
+        $otp = request('otp') ?? '';
+        if (!$otp) {
+            return $this->otpError($request, 'This account has enabled 2FA.');
+        }
+        $google2fa = new Google2FA();
+        $valid = $google2fa->verifyKey($secret, $otp);
+        if (!$valid) {
+            return $this->otpError($request, 'Wrong OTP. Please try again!');
+        }
+    }
+
+    /**
+     * Show OTP error message.
+     *
+     * @param $request
+     * @param $message
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    private function otpError($request, $message)
+    {
+        auth()->logout();
+        return back()->withErrors(['otp' => $message])->withInput();
     }
 }

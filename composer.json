@@ -9,14 +9,16 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
+        "bacon/bacon-qr-code": "^2.0",
         "cloudinary/cloudinary_php": "^1.16",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "google/cloud-translate": "^1.6",
         "guzzlehttp/guzzle": "^6.5",
-        "laravel/sanctum": "^0.2.1",
         "laravel/framework": "^7.0",
+        "laravel/sanctum": "^0.2.1",
         "laravel/tinker": "^2.0",
+        "pragmarx/google2fa": "^8.0",
         "sentry/sentry-laravel": "^1.7.0"
     },
     "require-dev": {

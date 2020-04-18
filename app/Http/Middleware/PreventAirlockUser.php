@@ -16,6 +16,7 @@ class PreventAirlockUser
     public function handle($request, Closure $next)
     {
         if (!empty(auth()->id()) && auth()->id() === 2) {
+            auth()->logout();
             return abort(401);
         }
         return $next($request);
