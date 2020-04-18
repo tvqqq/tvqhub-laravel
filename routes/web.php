@@ -36,6 +36,10 @@ Route::get('share/{id}', 'Admin\AmaQuestionController@share')->name('ama.share')
 
 // Admin (Auth needed)
 Route::group(['middleware' => ['auth', 'prevent-airlock-user'], 'namespace' => 'Admin'], function() {
+    Route::group(['prefix' => 'users', 'as' => 'users.'], function() {
+        Route::get('2fa', 'UserController@get2fa')->name('2fa');
+        Route::get('2fa/new', 'UserController@get2faNew')->name('2fa.new');
+    });
     Route::group(['prefix' => 'ama', 'as' => 'ama.'], function() {
         Route::get('/', 'AmaQuestionController@index');
         Route::get('{id}', 'AmaQuestionController@show')->name('show');
