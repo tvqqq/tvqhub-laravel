@@ -31,7 +31,7 @@ Auth::routes(['register' => false]);
 
 // No Auth needed
 Route::view('/', 'welcome');
-Route::get('/home', 'HomeController@index')->middleware('prevent-airlock-user')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('share/{id}', 'Admin\AmaQuestionController@share')->name('ama.share'); // AMA share question to FB
 
 // Admin (Auth needed)

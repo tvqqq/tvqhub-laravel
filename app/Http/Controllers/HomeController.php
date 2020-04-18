@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,21 +14,16 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'prevent-airlock-user']);
     }
 
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable|void
+     * @return Renderable
      */
     public function index()
     {
-        // Airlock / Sanctum
-        if (!empty(auth()->id()) && auth()->id() === 2) {
-            auth()->logout();
-            return abort(401);
-        }
         return view('home');
     }
 }

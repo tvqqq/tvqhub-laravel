@@ -4,6 +4,12 @@ namespace App\Http\Middleware;
 
 use Closure;
 
+/**
+ * Class PreventAirlockUser
+ * Airlock = Sanctum
+ * @see https://laravel.com/docs/7.x/sanctum
+ * @package App\Http\Middleware
+ */
 class PreventAirlockUser
 {
     /**
@@ -17,7 +23,7 @@ class PreventAirlockUser
     {
         if (!empty(auth()->id()) && auth()->id() === 2) {
             auth()->logout();
-            return abort(401);
+            return redirect('/');
         }
         return $next($request);
     }
