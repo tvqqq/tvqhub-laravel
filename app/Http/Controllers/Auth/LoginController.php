@@ -65,6 +65,13 @@ class LoginController extends Controller
         }
     }
 
+    /**
+     * Show OTP error message.
+     *
+     * @param $request
+     * @param $message
+     * @return \Illuminate\Http\RedirectResponse
+     */
     private function otpError($request, $message)
     {
         auth()->logout();
