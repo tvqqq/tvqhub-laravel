@@ -19,10 +19,15 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Contracts\Support\Renderable|void
      */
     public function index()
     {
+        // Airlock / Sanctum
+        if (!empty(auth()->id()) && auth()->id() === 2) {
+            auth()->logout();
+            return abort(401);
+        }
         return view('home');
     }
 }

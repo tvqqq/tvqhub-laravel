@@ -16,7 +16,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/b7e7ef4b41.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/b7e7ef4b41.js" crossorigin="anonymous" defer></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -83,9 +83,11 @@
     <main class="py-4">
         <div class="container">
             <div class="row justify-content-center">
+                @auth
                 <div class="col-md-2">
                     @include('layouts.menu')
                 </div>
+                @endauth
 
                 <div class="col-md-10 mt-4 mt-md-0">
                     @yield('content')
