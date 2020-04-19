@@ -6,7 +6,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## Deploy Laravel
+## Setup Laravel
 
 #### Create folders
 
@@ -28,7 +28,7 @@ sudo composer install --optimize-autoloader --no-dev
 sudo npm install
 ```
 
-#### Laravel Setup
+#### Laravel Prerequisite
 
 ```
 php artisan key:generate
@@ -43,17 +43,19 @@ php artisan migrate
 php artisan queue:table
 
 php artisan migrate
+
+(.env) QUEUE_CONNECTION=database
 ```
 
-_(.env)_ QUEUE_CONNECTION=database
+### Supervisor
 
 ```
 sudo apt install supervisor
-```
 
-```
 sudo service supervisor restart
 ```
+
+### laravel-worker.conf
 
 ```
 cd /etc/supervisor/conf.d
@@ -61,7 +63,6 @@ cd /etc/supervisor/conf.d
 sudo nano laravel-worker.conf
 ```
 
-### laravel-worker.conf
 ```
 [program:laravel-worker-tvqhub]
 process_name=%(program_name)s_%(process_num)02d
@@ -83,3 +84,30 @@ sudo supervisorctl update
 sudo supervisorctl status
 ```
 
+### Cronjob
+
+```
+sudo crontab -e
+
+* * * * * cd /var/www/html/tvqhub-laravel && php artisan schedule:run >> /dev/null 2>&1
+```
+
+---
+
+## Deployment
+
+```
+php artisan down
+
+gpm (git pull origin master)
+
+php artisan optimize:clear
+
+composer install -o --no-dev
+
+npm install
+
+php artisan optimize
+
+php artisan up
+```
