@@ -68,4 +68,8 @@ Route::group(['middleware' => ['auth', 'prevent-airlock-user'], 'namespace' => '
         Route::get('/', 'SettingController@index');
         Route::post('/', 'SettingController@update')->name('update');
     });
+    Route::group(['prefix' => 'messages', 'as' => 'messages'], function() {
+        Route::get('/', 'ChatsController@fetchMessages')->name('fetch');
+        Route::post('/', 'ChatsController@sendMessage')->name('send');
+    });
 });
