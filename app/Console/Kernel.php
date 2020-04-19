@@ -35,6 +35,10 @@ class Kernel extends ConsoleKernel
 
         $schedule->command(DeepTumblr::class)
             ->everyMinute()->runInBackground();
+
+        // Backups (to Google Drive)
+        $schedule->command('backup:clean')->dailyAt('00:25');
+        $schedule->command('backup:run --only-db')->dailyAt('00:30');
     }
 
     /**
