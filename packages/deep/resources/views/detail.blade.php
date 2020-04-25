@@ -24,7 +24,7 @@
                         class="media-display"></iframe>
             @endif
             <div class="content">
-                {{ Illuminate\Mail\Markdown::parse($post->content) }}
+                {{ Illuminate\Mail\Markdown::parse(Deep::formatStyle($post->content)) }}
             </div>
             <form id="edit-post" action="{{ route('deep.posts.update', $post->id) }}" method="POST">
                 @csrf

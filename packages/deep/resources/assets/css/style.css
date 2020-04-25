@@ -6,6 +6,7 @@
 
 body {
     font-family: 'Inconsolata', monospace;
+    text-align: justify;
 }
 
 .container {
@@ -311,11 +312,6 @@ a.view-post:hover {
     margin-top: 20px;
 }
 
-.detail-social {
-    position: fixed;
-    right: 0;
-}
-
 .detail-social .fb-plugins {
     margin-left: 50px;
 }
@@ -448,4 +444,17 @@ blockquote p {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+.page-index .block-chinese {
+    display: none;
+}
+
+.block-chinese {
+    line-height: 200%;
+    color: #FF4500;
+    letter-spacing: 1.1px;
+    border-top: 1px dashed #ffd4c4;
+    padding-top: 15px;
+    margin-top: 15px;
 }

@@ -14,7 +14,7 @@
 @endpush
 
 @section('content')
-    <div class="grid unloaded">
+    <div class="grid unloaded page-index">
         <div class="grid-sizer"></div>
         <div class="gutter-sizer"></div>
         @foreach ($posts as $post)
@@ -25,7 +25,7 @@
                     <iframe src="https://www.youtube.com/embed/{{ $post->media }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
                             class="media-display"></iframe>
                 @endif
-                {{ $post->content ? Illuminate\Mail\Markdown::parse($post->content) : '' }}
+                {{ $post->content ? Illuminate\Mail\Markdown::parse(Deep::formatStyle($post->content)) : '' }}
                 <a href="{{ route('deep.posts.show', $post->id) }}" class="view-post">
                     <span>ღ</span> {{ $post->created_at->locale('vi_VN') }}
                 </a>
