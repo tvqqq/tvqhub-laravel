@@ -12,6 +12,12 @@
 
             <div class="card-body">
                 <x-setting>
+                    <x-slot name="title">Facebook Access Token</x-slot>
+                    <x-slot name="description">1. Facebook Bussiness: <a href="https://business.facebook.com/" target="_blank">link</a> >> 2. Tab Network, filter <code>access_token</code></x-slot>
+                    <x-text :value="$data" key="fb_access_token"></x-text>
+                </x-setting>
+
+                <x-setting>
                     <x-slot name="title">Tumblr API Key</x-slot>
                     <x-slot name="description">Document: <a href="https://www.tumblr.com/docs/en/api/v2" target="_blank">https://www.tumblr.com/docs/en/api/v2</a></x-slot>
                     <x-text :value="$data" key="tumblr_api_key"></x-text>
