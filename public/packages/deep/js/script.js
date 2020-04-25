@@ -71,7 +71,7 @@ $(function () {
         $('.media-input').css('display', 'none');
         $('.media-' + this.value).css('display', 'block');
         if (this.value === '999') {
-            $('textarea[name=content]').val(`#### 00x \r\nvietnamese \r\n\r\n[c]\r\nchinese\r\n[/c]`);
+            $('textarea[name=content]').val(`#### [00x]\r\nvietnamese\r\n\r\n[c]\r\nchinese\r\n\r\n/ pinyin /\r\n[/c]`);
         } else {
             $('textarea[name=content]').val('');
         }
