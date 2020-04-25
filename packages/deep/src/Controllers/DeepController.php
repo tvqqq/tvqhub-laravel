@@ -43,6 +43,18 @@ class DeepController extends Controller
     }
 
     /**
+     * Display posts with type is video
+     *
+     * @return Factory|View
+     */
+    public function index999()
+    {
+        $posts = DeepPost::where('type', '999')->latest()->paginate(10);
+
+        return view('deep::index', compact('posts'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return void

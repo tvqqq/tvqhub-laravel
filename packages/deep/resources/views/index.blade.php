@@ -62,6 +62,7 @@
                     <option value="text">Text</option>
                     <option value="image">Image</option>
                     <option value="video">Video</option>
+                    <option value="999">999</option>
                 </select>
                 <div class="media-image media-input">
                     <input type="file" name="media_image_upload"/>
