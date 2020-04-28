@@ -1,0 +1,24 @@
+name: CI
+
+on: [push]
+
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/master'
+    runs-on: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Push to server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.KEY_SSH }}
+          script: cd /var/www/html/tvqhub-laravel
+            && php artisan down
+            && git pull origin master
+            && php artisan optimize:clear
+            && composer install
+            && npm install
+            && php artisan optimize
+            && php artisan up
