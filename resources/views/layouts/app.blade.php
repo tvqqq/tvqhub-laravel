@@ -16,7 +16,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/b7e7ef4b41.js" crossorigin="anonymous" defer></script>
+    <link rel="stylesheet" href="https://storage.googleapis.com/tvqhub/fontawesome-pro/css/all.min.css" />
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">

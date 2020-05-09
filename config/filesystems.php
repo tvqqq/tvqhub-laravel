@@ -66,7 +66,7 @@ return [
 
         'google-drive' => [
             'driver' => 'google-drive',
-            'clientId' => env('GOOGLE_DRIVE_CLIENT_ID'),
+            'clientId' => env('GOOGLE_DRIVE_CLIENT_ID', 'gdrive_test'),
             'clientSecret' => env('GOOGLE_DRIVE_CLIENT_SECRET'),
             'refreshToken' => env('GOOGLE_DRIVE_REFRESH_TOKEN'),
             'folderId' => env('GOOGLE_DRIVE_FOLDER_ID'),

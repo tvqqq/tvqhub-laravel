@@ -9,6 +9,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link rel="stylesheet" href="https://storage.googleapis.com/tvqhub/fontawesome-pro/css/all.min.css" />
 
         <!-- Styles -->
         <style>
@@ -84,6 +85,7 @@
                 <div class="title m-b-md">
                     {{ config('app.name') }}
                 </div>
+                <h2><i class="fas fa-alien-monster"></i></h2>
 
                 <div class="links">
                     <a href="https://tvqhub.com">TVQhub.com</a>
