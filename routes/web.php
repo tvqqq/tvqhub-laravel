@@ -68,4 +68,7 @@ Route::group(['middleware' => ['auth', 'prevent-airlock-user'], 'namespace' => '
         Route::get('/', 'SettingController@index');
         Route::post('/', 'SettingController@update')->name('update');
     });
+    Route::resource('bucket-list', 'BucketListController')->names([
+        'index' => 'bucket-list.'
+    ]);
 });

@@ -1,4 +1,17 @@
 -- ----------------------------
+-- [4] 2020-05-31 - Table bucket_list
+CREATE TABLE `tvqhub`.`bucket_list`  (
+    `id` int(0) NOT NULL,
+    `content` text NULL,
+    `description` text NULL,
+    `complete_date` timestamp(0) NULL,
+    `created_at` timestamp(0) NULL,
+    `updated_at` timestamp(0) NULL,
+    `deleted_at` timestamp(0) NULL,
+    PRIMARY KEY (`id`)
+);
+
+-- ----------------------------
 -- [3] 2020-04-18 - Add column google2fa_secret
 ALTER TABLE `tvqhub`.`users`
 ADD COLUMN `google2fa_secret` varchar(255) NULL AFTER `remember_token`;
