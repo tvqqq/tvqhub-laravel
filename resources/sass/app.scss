@@ -6,3 +6,7 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+.modal-backdrop {
+    opacity: 0.5 !important;
+}

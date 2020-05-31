@@ -62,8 +62,19 @@ abstract class BaseRepository implements BaseRepositoryInterface
         return $this->model->latest()->get();
     }
 
+    /**
+     * @inheritDoc
+     */
     public function findById(int $id)
     {
         return $this->model->findOrFail($id);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getAll()
+    {
+        return $this->model->latest()->paginate();
     }
 }

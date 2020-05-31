@@ -1,13 +1,12 @@
 -- ----------------------------
--- [4] 2020-05-31 - Table bucket_list
-CREATE TABLE `tvqhub`.`bucket_list`  (
+-- [4] 2020-05-31 - Table bucket_lists
+CREATE TABLE `tvqhub`.`bucket_lists`  (
     `id` int(0) NOT NULL,
     `content` text NULL,
     `description` text NULL,
     `complete_date` timestamp(0) NULL,
     `created_at` timestamp(0) NULL,
     `updated_at` timestamp(0) NULL,
-    `deleted_at` timestamp(0) NULL,
     PRIMARY KEY (`id`)
 );
 

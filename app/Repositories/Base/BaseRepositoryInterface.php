@@ -45,4 +45,11 @@ interface BaseRepositoryInterface
      * @return mixed
      */
     public function findById(int $id);
+
+    /**
+     * Get all resources with pagination.
+     *
+     * @return mixed
+     */
+    public function getAll();
 }

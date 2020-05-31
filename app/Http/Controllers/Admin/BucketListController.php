@@ -32,7 +32,7 @@ class BucketListController extends Controller
      */
     public function index()
     {
-        //
+        return view('bucket-list.index');
     }
 
     /**
@@ -57,14 +57,16 @@ class BucketListController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display all resources.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id = 0)
     {
-        //
+        $data = $this->repository->getAll();
+
+        return $this->response(['success' => true, 'data' => $data]);
     }
 
     /**

@@ -21,6 +21,7 @@ class RepositoryServiceProvider extends ServiceProvider
             Repo\SlackWebhookRepositoryInterface::class => Repo\SlackWebhookRepository::class,
             Repo\LarOptionRepositoryInterface::class => Repo\LarOptionRepository::class,
             Repo\FacebookerRepositoryInterface::class => Repo\FacebookerRepository::class,
+            Repo\BucketListRepositoryInterface::class => Repo\BucketListRepository::class,
         ];
     }
 

@@ -5,8 +5,12 @@
  */
 
 require('./bootstrap');
+import { BootstrapVue } from 'bootstrap-vue';
 
 window.Vue = require('vue');
+
+Vue.use(BootstrapVue);
+Vue.use(require('vue-moment'));
 
 /**
  * The following block of code may be used to automatically register your
@@ -18,6 +22,11 @@ window.Vue = require('vue');
 
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+
+/**
+ * Declare app of components.
+ */
+Vue.component('app', require('../views/bucket-list/App').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

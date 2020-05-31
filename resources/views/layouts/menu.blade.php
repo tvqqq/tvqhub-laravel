@@ -6,6 +6,7 @@
         'chinese-playlist.' => 'Chinese Playlist',
         'url.' => 'Short Link (URL)',
         'facebooker.' => 'Facebooker',
+        'bucket-list.' => 'Bucket List',
     ]
 ?>
 
