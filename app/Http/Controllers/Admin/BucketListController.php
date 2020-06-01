@@ -100,6 +100,8 @@ class BucketListController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $result = $this->repository->destroy($id);
+
+        return $this->response(['success' => true, 'data' => $result]);
     }
 }

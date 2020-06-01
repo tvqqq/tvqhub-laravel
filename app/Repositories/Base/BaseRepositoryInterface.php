@@ -52,4 +52,12 @@ interface BaseRepositoryInterface
      * @return mixed
      */
     public function getAll();
+
+    /**
+     * Delete a record.
+     *
+     * @param int $id
+     * @return mixed
+     */
+    public function destroy(int $id);
 }

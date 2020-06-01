@@ -6,11 +6,13 @@
 
 require('./bootstrap');
 import { BootstrapVue } from 'bootstrap-vue';
+import Notifications from 'vue-notification';
 
 window.Vue = require('vue');
 
 Vue.use(BootstrapVue);
 Vue.use(require('vue-moment'));
+Vue.use(Notifications);
 
 /**
  * The following block of code may be used to automatically register your

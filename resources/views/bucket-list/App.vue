@@ -1,6 +1,7 @@
 <template>
     <div>
-        <b-table hover :items="items">
+        <notifications/>
+        <b-table :items="items">
             <template v-slot:cell(last_updated)="row">
                 <b>{{ row.item.last_updated }}</b> /
                 <a href="#" class="text-primary" @click="edit(row)"><i class="far fa-edit"></i></a> /
@@ -35,7 +36,15 @@
                     centered: true
                 })
                     .then(() => {
-                        console.log(row);
+                        axios({
+                            method: 'DELETE',
+                            url: '/bucket-list/' + row.item.id
+                        }).then(response => {
+                            this.$notify(response.data.message);
+                            if (response.data.data) {
+                                this.items.splice(row.index, 1);
+                            }
+                        });
                     });
             },
             edit(row) {

@@ -77,4 +77,13 @@ abstract class BaseRepository implements BaseRepositoryInterface
     {
         return $this->model->latest()->paginate();
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function destroy(int $id)
+    {
+        return true;
+        //return $this->findById($id)->delete();
+    }
 }
