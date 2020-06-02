@@ -1,7 +1,7 @@
 -- ----------------------------
 -- [4] 2020-05-31 - Table bucket_lists
 CREATE TABLE `tvqhub`.`bucket_lists`  (
-    `id` int(0) NOT NULL,
+    `id` int(0) AUTO_INCREMENT NOT NULL,
     `content` text NULL,
     `description` text NULL,
     `complete_date` timestamp(0) NULL,
