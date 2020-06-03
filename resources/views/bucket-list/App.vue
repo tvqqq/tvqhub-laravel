@@ -3,10 +3,11 @@
         <notifications/>
         <div class="mb-3">
             <b-button v-b-modal.modal-create>Add new</b-button>
-            <create :items="items" :fields="fields"></create>
+            <create></create>
+            <edit :row="row"></edit>
         </div>
 
-        <b-table :items="items" ref="table">
+        <b-table :busy.sync="isBusy" :items="getItems" id="datatable">
             <template v-slot:cell(last_updated)="row">
                 <b>{{ row.item.last_updated }}</b> /
                 <a href="#" class="text-primary" @click="edit(row)"><i class="far fa-edit"></i></a> /
@@ -18,24 +19,29 @@
 
 <script>
     import Create from "./Create";
+    import Edit from "./Edit";
     export default {
         name: "App",
-        components: {Create},
+        components: {Edit, Create},
         data() {
             return {
-                fields: ['id', 'content', 'description', 'complete_date', 'last_updated'],
-                items: []
+                isBusy: false,
+                row: null,
             }
         },
-        created() {
-            axios({
-                method: 'GET',
-                url: '/bucket-list/0'
-            }).then(response => {
-                this.items = response.data.data.data;
-            });
-        },
         methods: {
+            async getItems(ctx) {
+                this.isBusy = true;
+                try {
+                    // const response = await axios.get(`/some/url?page=${ctx.currentPage}&size=${ctx.perPage}`)
+                    const response = await axios.get('/bucket-list/0');
+                    this.isBusy = false;
+                    return response.data.data.data;
+                } catch (error) {
+                    this.isBusy = false;
+                    return [];
+                }
+            },
             del(row) {
                 this.$bvModal.msgBoxConfirm('Please confirm that you want to delete.', {
                     size: 'sm',
@@ -50,15 +56,13 @@
                             url: '/bucket-list/' + row.item.id
                         }).then(response => {
                             this.$notify(response.data.message);
-                            // if (response.data.data) {
-                            //     this.items.splice(row.index, 1);
-                            // }
-                            this.$refs.table.refresh();
+                            this.$root.$emit('bv::refresh::table', 'datatable');
                         });
                     });
             },
             edit(row) {
-                console.log(row);
+                this.$bvModal.show('modal-edit');
+                this.row = row;
             }
         }
     }

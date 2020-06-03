@@ -14,7 +14,6 @@
 <script>
     export default {
         name: "Create",
-        props: ['items'],
         data() {
             return {
                 content: '',
@@ -30,6 +29,7 @@
                     }
                 }).then(response => {
                     this.$notify(response.data.message);
+                    this.$root.$emit('bv::refresh::table', 'datatable');
                 });
             }
         }

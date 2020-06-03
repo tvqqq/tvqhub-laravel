@@ -51,7 +51,9 @@ abstract class BaseRepository implements BaseRepositoryInterface
      */
     public function create(array $data)
     {
-        return $this->model->create($data);
+        $create = $this->model->create($data);
+
+        return $this->findById($create->id);
     }
 
     /**
@@ -83,7 +85,14 @@ abstract class BaseRepository implements BaseRepositoryInterface
      */
     public function destroy(int $id)
     {
-        return true;
-        //return $this->findById($id)->delete();
+        return $this->findById($id)->delete();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function update(int $id, array $data)
+    {
+        return $this->findById($id)->update($data);
     }
 }

@@ -60,4 +60,13 @@ interface BaseRepositoryInterface
      * @return mixed
      */
     public function destroy(int $id);
+
+    /**
+     * Update a record.
+     *
+     * @param int $id
+     * @param array $data
+     * @return mixed
+     */
+    public function update(int $id, array $data);
 }

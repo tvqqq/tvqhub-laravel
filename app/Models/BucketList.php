@@ -17,4 +17,9 @@ class BucketList extends Model
     {
         return Carbon::parse($this->updated_at)->diffForHumans();
     }
+
+    public function getCompleteDateAttribute($value)
+    {
+        return $value ? Carbon::parse($value)->format('Y-m-d') : null;
+    }
 }

@@ -69,7 +69,9 @@ class BucketListController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = $this->repository->findById($id);
+
+        return $this->response(['success' => true, 'data' => $data]);
     }
 
     /**
@@ -81,7 +83,9 @@ class BucketListController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $this->repository->update($id, $request->all());
+
+        return $this->response(['success' => true, 'data' => $data]);
     }
 
     /**
