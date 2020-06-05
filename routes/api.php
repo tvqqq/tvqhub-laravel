@@ -32,7 +32,7 @@ Route::group(['middleware' => 'auth:airlock', 'namespace' => 'API', 'as' => 'api
         Route::get('/', 'ChinesePlaylistController@index');
     });
 
-//    Route::group(['prefix' => 'bucket-list'], function() {
-//        Route::get('/', 'BucketListController@index');
-//    });
+   Route::group(['prefix' => 'bucket-list'], function() {
+       Route::get('/', 'BucketListController@index');
+   });
 });

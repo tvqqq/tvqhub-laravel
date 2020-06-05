@@ -95,4 +95,12 @@ abstract class BaseRepository implements BaseRepositoryInterface
     {
         return $this->findById($id)->update($data);
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function get()
+    {
+        return $this->model->all();
+    }
 }

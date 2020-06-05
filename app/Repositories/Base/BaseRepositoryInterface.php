@@ -69,4 +69,9 @@ interface BaseRepositoryInterface
      * @return mixed
      */
     public function update(int $id, array $data);
+
+    /**
+     * Get resource as normal.
+     */
+    public function get();
 }
