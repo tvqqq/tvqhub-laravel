@@ -30,6 +30,7 @@
                 }).then(response => {
                     this.$notify(response.data.message);
                     this.$root.$emit('bv::refresh::table', 'datatable');
+                    this.content = '';
                 });
             }
         }
