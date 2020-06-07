@@ -33,7 +33,7 @@ class ChinesePlaylistController extends Controller
      */
     public function index()
     {
-        $data = $this->repository->getLatest();
+        $data = $this->repository->getAll();
 
         return view('chinese-playlist.index', compact('data'));
     }

@@ -24,7 +24,7 @@ class BucketListController extends Controller
 
     public function index()
     {
-        $data = $this->repository->get();
+        $data = $this->repository->getAll(false);
 
         return $this->response(['success' => true, 'data' => $data]);
     }

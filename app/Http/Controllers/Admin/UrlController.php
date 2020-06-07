@@ -32,7 +32,7 @@ class UrlController extends Controller
      */
     public function index()
     {
-        $data = $this->repository->getLatest();
+        $data = $this->repository->getAll();
 
         return view('url.admin.index', compact('data'));
     }

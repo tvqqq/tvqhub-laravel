@@ -23,7 +23,7 @@ class ChinesePlaylistController extends Controller
 
     public function index()
     {
-        $playlist = $this->repository->getLatest();
+        $playlist = $this->repository->getAll();
 
         $meta = [
             'count' => count($playlist),

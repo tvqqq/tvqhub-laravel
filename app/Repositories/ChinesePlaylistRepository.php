@@ -24,6 +24,6 @@ class ChinesePlaylistRepository extends BaseRepository implements ChinesePlaylis
      */
     public function getTimeLastUpdated()
     {
-        return $this->getLatest()->first()->created_at->locale('vi')->diffForHumans();
+        return $this->getAll()->first()->created_at->locale('vi')->diffForHumans();
     }
 }

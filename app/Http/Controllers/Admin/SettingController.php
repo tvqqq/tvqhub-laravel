@@ -25,7 +25,7 @@ class SettingController extends Controller
 
     public function index()
     {
-        $data = $this->repository->getLatest()->mapWithKeys(function ($item) {
+        $data = $this->repository->getAll()->mapWithKeys(function ($item) {
             return [$item['key'] => $item['value']];
         })->all();
         return view('settings.index', compact('data'));

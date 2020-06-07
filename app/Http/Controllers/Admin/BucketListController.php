@@ -56,7 +56,7 @@ class BucketListController extends Controller
      */
     public function show($id = 0)
     {
-        $data = $this->repository->getAll();
+        $data = $this->repository->getAll(true, true);
 
         return $this->response(['success' => true, 'data' => $data]);
     }

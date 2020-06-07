@@ -32,13 +32,6 @@ interface BaseRepositoryInterface
     public function create(array $data);
 
     /**
-     * Get all records order by latest.
-     *
-     * @return mixed
-     */
-    public function getLatest();
-
-    /**
      * Find the item by id
      *
      * @param int $id
@@ -47,11 +40,13 @@ interface BaseRepositoryInterface
     public function findById(int $id);
 
     /**
-     * Get all resources with pagination.
+     * Get all resources with pagination when needed.
      *
+     * @param bool $latest
+     * @param bool $paginate
      * @return mixed
      */
-    public function getAll();
+    public function getAll($latest = true, $paginate = false);
 
     /**
      * Delete a record.
@@ -69,9 +64,4 @@ interface BaseRepositoryInterface
      * @return mixed
      */
     public function update(int $id, array $data);
-
-    /**
-     * Get resource as normal.
-     */
-    public function get();
 }
