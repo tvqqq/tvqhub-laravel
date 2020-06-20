@@ -14,7 +14,7 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.KEY_SSH }}
-          script: cd /var/www/html/tvqhub-laravel
+          script: cd /opt/tvqhub-laravel
             && php artisan down
             && git pull origin master
             && php artisan optimize:clear
