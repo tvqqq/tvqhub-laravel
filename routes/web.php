@@ -46,7 +46,7 @@ Route::group(['middleware' => ['auth', 'prevent-airlock-user'], 'namespace' => '
         Route::put('{id}', 'AmaQuestionController@update')->name('update');
         Route::delete('{id}', 'AmaQuestionController@destroy')->name('destroy');
         Route::delete('force/{id}', 'AmaQuestionController@forceDelete')->name('forceDelete');
-        Route::patch('restore/{id}', 'AmaQuestionController@restore')->name('restore');
+        Route::put('restore/{id}', 'AmaQuestionController@restore')->name('restore');
     });
     Route::resource('chinese-playlist', 'ChinesePlaylistController')->names([
         'index' => 'chinese-playlist.'
@@ -60,8 +60,8 @@ Route::group(['middleware' => ['auth', 'prevent-airlock-user'], 'namespace' => '
         Route::get('timer', 'FacebookerController@timer')->name('api.timer');
         Route::group(['prefix' => 'friends', 'as' => 'api.friends.'], function() {
             Route::get('/', 'FacebookerController@friends')->name('list');
-            Route::patch('update', 'FacebookerController@updateFriends')->name('update');
-            Route::patch('timer', 'FacebookerController@updateTimer')->name('timer');
+            Route::put('update', 'FacebookerController@updateFriends')->name('update');
+            Route::put('timer', 'FacebookerController@updateTimer')->name('timer');
         });
     });
     Route::group(['prefix' => 'settings', 'as' => 'settings.'], function() {

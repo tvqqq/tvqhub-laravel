@@ -112,7 +112,7 @@
                 e.preventDefault();
                 $.ajax({
                     url: '{{ route('ama.restore', $question->id) }}',
-                    method: 'PATCH',
+                    method: 'PUT',
                     data: {
                         '_token': '{{ csrf_token() }}',
                     }

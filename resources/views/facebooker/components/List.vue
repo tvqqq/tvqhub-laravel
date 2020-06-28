@@ -85,7 +85,7 @@
                 this.isUpdate = true;
                 this.textUpdate = '<i class="fas fa-spinner fa-spin"></i> Loading';
                 axios({
-                    method: 'PATCH',
+                    method: 'PUT',
                     url: '/facebooker/friends/update'
                 }).then(response => {
                     let faIcon = response.data.success ? 'check' : 'times';
@@ -94,7 +94,7 @@
             },
             getTimerAvaiable() {
                 axios({
-                    method: 'PATCH',
+                    method: 'PUT',
                     url: '/facebooker/timer'
                 }).then(response => {
                     this.timerAvailable = response.data.data;
@@ -103,7 +103,7 @@
             },
             updateAuto(id, selected) {
                 axios({
-                    method: 'PATCH',
+                    method: 'PUT',
                     url: '/facebooker/friends/timer',
                     data: {
                         'id': id,
