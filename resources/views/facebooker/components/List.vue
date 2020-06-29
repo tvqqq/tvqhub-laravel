@@ -94,7 +94,7 @@
             },
             getTimerAvaiable() {
                 axios({
-                    method: 'PATCH',
+                    method: 'GET',
                     url: '/facebooker/timer'
                 }).then(response => {
                     this.timerAvailable = response.data.data;
