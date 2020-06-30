@@ -38,6 +38,7 @@ class FbAutoLike extends Command
      */
     public function handle()
     {
-        app(FacebookerRepositoryInterface::class)->autoLike();
+        // TODO: make a setting enable this function
+        // app(FacebookerRepositoryInterface::class)->autoLike();
     }
 }
