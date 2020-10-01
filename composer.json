@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
+        "aws/aws-sdk-php": "^3.157",
         "bacon/bacon-qr-code": "^2.0",
         "cloudinary/cloudinary_php": "^1.16",
         "fideloper/proxy": "^4.2",

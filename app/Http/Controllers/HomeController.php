@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use Aws\DynamoDb\DynamoDbClient;
 
 class HomeController extends Controller
 {
@@ -25,5 +26,16 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function test()
+    {
+        // Test DDB
+        $sdk = new DynamoDbClient([
+            'region'   => 'ap-southeast-1',
+            'version'  => 'latest'
+        ]);
+        $data = $sdk->listTables();
+        dd($data);
     }
 }

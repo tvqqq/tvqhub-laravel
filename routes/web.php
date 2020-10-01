@@ -24,6 +24,9 @@ Route::group(['domain' => 'ly' . config('session.domain'), 'as' => 'url.site.'],
     });
 });
 
+// Test
+Route::get('/test', 'HomeController@test');
+
 /**
  * Lar.tvqhub
  */
