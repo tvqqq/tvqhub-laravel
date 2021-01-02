@@ -178,6 +178,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
 
+        // Metronic
+        App\Providers\MetronicServiceProvider::class,
     ],
 
     /*
@@ -231,6 +233,9 @@ return [
         'Helper' => App\Facades\HelperFacade::class,
         'Opt' => App\Facades\LarOptionFacade::class,
 
+        // Metronic
+        'Metronic' => App\Classes\Theme\Metronic::class,
+        'Menu' => App\Classes\Theme\Menu::class,
     ],
 
 ];

@@ -18,6 +18,16 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://storage.googleapis.com/tvqhub/fontawesome-pro/css/all.min.css" />
 
+    {{-- Global Theme Styles (used by all pages) --}}
+    @foreach(config('layout.resources.css') as $style)
+        <link href="{{ config('layout.self.rtl') ? asset(Metronic::rtlCssPath($style)) : asset($style) }}" rel="stylesheet" type="text/css"/>
+    @endforeach
+
+    {{-- Layout Themes (used by all pages) --}}
+    @foreach (Metronic::initThemes() as $theme)
+        <link href="{{ config('layout.self.rtl') ? asset(Metronic::rtlCssPath($theme)) : asset($theme) }}" rel="stylesheet" type="text/css"/>
+    @endforeach
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/datatables/datatables.min.css') }}" rel="stylesheet">

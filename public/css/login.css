@@ -1,0 +1,221 @@
+* {
+  font-family: "Be Vietnam", sans-serif;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+html,
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.decor-wrapper {
+  display: inline-block;
+  height: 100%;
+  position: relative;
+  width: 50%;
+}
+
+.decor {
+  top: 10%;
+  bottom: 8%;
+  left: 16%;
+  right: 0;
+  position: absolute;
+
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.decor p {
+  color: #fff;
+  padding-left: 7rem;
+  margin: 0;
+}
+
+.decor-welcome {
+  font-size: 3rem;
+  font-weight: 100;
+  letter-spacing: 0.01em;
+  line-height: 4.4rem;
+}
+
+.decor-name {
+  font-size: 4.4rem;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  line-height: 6.4rem;
+}
+
+.decor img {
+  position: relative;
+  width: 35vw;
+}
+
+.main-form--wrapper {
+  display: inline-block;
+  float: right;
+  height: 100%;
+  position: relative;
+  width: 50%;
+}
+
+.main-form {
+  position: absolute;
+  top: 25%;
+  bottom: 35%;
+  right: 25%;
+  left: 20%;
+  text-align: center;
+}
+
+.main-form__title {
+  color: #192a3e;
+  font-size: 2.8rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 3.6rem;
+  margin: 0;
+  margin-bottom: 6rem;
+  text-transform: uppercase;
+}
+
+.main-form__field {
+  position: relative;
+}
+
+.main-form__field + .main-form__field {
+  margin-top: 4rem;
+}
+
+.main-form__field .name {
+  position: absolute;
+  right: calc(100% + 1rem);
+  top: 50%;
+  text-align: right;
+  margin-top: -1.2rem;
+  width: 10rem;
+
+  color: #192a3e;
+  font-size: 1.6rem;
+  letter-spacing: 0.01em;
+  line-height: 2.4rem;
+}
+
+.main-form__field .value {
+  font-size: 1.6rem;
+  letter-spacing: 0.01em;
+  line-height: 2.4rem;
+  padding: 1.2rem 2.1rem;
+  width: 100%;
+
+  background: #f8fafb;
+  border: 0.5px solid #c4c4c4;
+  box-shadow: 2px 0px 18px rgba(0, 0, 0, 0.06);
+  border-radius: 0.4rem;
+}
+
+.main-form__forget-link {
+  color: #f7685b;
+  display: inline-block;
+  float: right;
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.9rem;
+  margin-top: 1rem;
+  position: relative;
+  text-align: right;
+  text-decoration: none;
+}
+
+.main-form__forget-link:hover::after,
+.main-form__forget-link:focus::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: calc(100% + 0.5rem);
+  background-color: #f7685b;
+  height: 1px;
+}
+
+.main-form__submit-btn {
+  background: linear-gradient(180deg, #7f59dc 0%, #675be6 100%);
+  border: none;
+  border-radius: 3.5rem;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.9rem;
+  margin-top: 4rem;
+  padding: 1rem 0 1.4rem;
+  width: 100%;
+}
+
+.main-form__hello {
+  color: #192a3e;
+  font-size: 2.8rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 3.6rem;
+  margin: 0;
+}
+
+.main-form__dir {
+  color: #3e3e3e;
+  font-size: 1.6rem;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  line-height: 2.4rem;
+  margin: 0;
+  margin-top: 0.6rem;
+  margin-bottom: 3.5rem;
+}
+
+.main-form__select-company {
+  background: #f8fafb;
+  border: 0.5px solid #c4c4c4;
+  box-sizing: border-box;
+  border-radius: 0.4rem;
+  color: #323c47;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.main-form__select-company li {
+  display: block;
+  list-style: none;
+  position: relative;
+  text-align: left;
+}
+
+.main-form__select-company li input {
+  z-index: -1;
+  opacity: 0;
+  position: absolute;
+}
+
+.main-form__select-company label {
+  display: block;
+  padding: 1rem 3.6rem;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+}
+
+.main-form__select-company input:checked + label {
+  background-color: #e8e8f9;
+  border-top-color: #d5d5d5;
+  border-bottom-color: #d5d5d5;
+}
